@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Department of Computational Perception | Emmanouil Karystinaios</title><link>https://emmanouil-karystinaios.github.io/tag/department-of-computational-perception/</link><atom:link href="https://emmanouil-karystinaios.github.io/tag/department-of-computational-perception/index.xml" rel="self" type="application/rss+xml"/><description>Department of Computational Perception</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><image><url>https://emmanouil-karystinaios.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>Department of Computational Perception</title><link>https://emmanouil-karystinaios.github.io/tag/department-of-computational-perception/</link></image><item><title>Slides</title><link>https://emmanouil-karystinaios.github.io/slides/example/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/slides/example/</guid><description>&lt;h2 id="on-performance-similarity-and-structure-segmentation">On Performance Similarity and Structure Segmentation&lt;/h2>
+&lt;p>&lt;a href="emmanouil-karystinaios.netify.app">Emmanouil Karystinaios&lt;/a> | &lt;a href="emmanouil-karystinaios.netify.app">article&lt;/a>&lt;/p>
+&lt;!-- [Wowchemy](https://wowchemy.com/) | [Documentation](https://owchemy.com/docs/managing-content/#create-slides) -->
+&lt;hr>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Our objective is to find a way to quantify similarity of performances for which we have a matched score.
+But first, we have to answer the following questions :&lt;/p>
+&lt;ul>
+&lt;li>What is performance similarity&lt;/li>
+&lt;li>How to measure siilarity in match scores?&lt;/li>
+&lt;li>Which similarity metric to use ?&lt;/li>
+&lt;li>Why measure performance similarity?&lt;/li>
+&lt;li>What elements affect our perception of performance similarity?&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="self-similarity-matrices">Self-Similarity Matrices&lt;/h2>
+&lt;p>The concept of self-similarity matrices is fundamental for
+capturing structural properties of music recordings. Generally,
+one starts with a feature space L containing the elements of
+the feature sequence under consideration as well as with a
+similarity measure $f : \mathcal{L} \times \mathcal{L} \to \mathbb{R}$.&lt;/p>
+&lt;hr>
+&lt;h2 id="controls">Controls&lt;/h2>
+&lt;ul>
+&lt;li>Next: &lt;code>Right Arrow&lt;/code> or &lt;code>Space&lt;/code>&lt;/li>
+&lt;li>Previous: &lt;code>Left Arrow&lt;/code>&lt;/li>
+&lt;li>Start: &lt;code>Home&lt;/code>&lt;/li>
+&lt;li>Finish: &lt;code>End&lt;/code>&lt;/li>
+&lt;li>Overview: &lt;code>Esc&lt;/code>&lt;/li>
+&lt;li>Speaker notes: &lt;code>S&lt;/code>&lt;/li>
+&lt;li>Fullscreen: &lt;code>F&lt;/code>&lt;/li>
+&lt;li>Zoom: &lt;code>Alt + Click&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://github.com/hakimel/reveal.js#pdf-export" target="_blank" rel="noopener">PDF Export&lt;/a>: &lt;code>E&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="interval-vectors">Interval Vectors&lt;/h2>
+&lt;dl>
+&lt;dt>&lt;strong>&lt;em>Definition&lt;/em>&lt;/strong>&lt;/dt>
+&lt;dd>An interval vector is an array of natural numbers which summarize the intervals present in a set of pitch classes. There is an equivalence between complementary intervals within the octave for example $2^{nd}$ minor and $7^{nth}$ major intervals, etc.&lt;/dd>
+&lt;/dl>
+&lt;p>Examples :&lt;/p>
+&lt;ul>
+&lt;li>Any Major chord : $ [0, 0, 1, 1, 1, 0 ] $&lt;/li>
+&lt;li>Any Minor chord : $ [0, 0, 1, 1, 1, 0 ] $&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="interval-vectors-and-cadences">Interval Vectors and Cadences&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>Typical Cadences&lt;/strong>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>$\textrm{V}$ &amp;amp; - &amp;amp; $\textrm{I}$&lt;/td>
+&lt;td>authentic&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\textrm{I}$ &amp;amp; - &amp;amp; $\textrm{V}$&lt;/td>
+&lt;td>half&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\textrm{IV}$ &amp;amp; - &amp;amp; $\textrm{I}$&lt;/td>
+&lt;td>plagal&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\textrm{V}$ &amp;amp; - &amp;amp; $\textrm{VI}$&lt;/td>
+&lt;td>deceptive&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Interval Vectors are commutative, i.e. $\textrm{V} \to \textrm{I} = \textrm{I} \to \textrm{V} $:&lt;/p>
+&lt;ul>
+&lt;li>$ (\textrm{V/I})_{maj} = [1, 2, 2, 2, 3, 0] $&lt;/li>
+&lt;li>$ (\textrm{V/I})_{min} = [2, 1, 2, 3, 2, 0] $&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="code-highlighting">Code Highlighting&lt;/h2>
+&lt;p>Inline code: &lt;code>variable&lt;/code>&lt;/p>
+&lt;p>Code block:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">porridge&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;blueberry&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">porridge&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;blueberry&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Eating...&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>For every window $w_i^j$ we compute the interval vector of all notes in thye window/ Therefore, $\textrm{Int_Vec}(w_i^j)\in \mathbb{N}^6$.
+$$
+\mathcal(W) = \sum_{i=1}^N\sum_{j=1}^\nu \textrm{Int_Vec}(w_i^j)
+$$
+Then, let $\mathcal{X}$ be some matrix decomposition of $\mathcal{W}$. The SSM $\mathcal{S}$ of $\mathcal{X}$ is:
+$$
+\mathcal{S} = \frac{\mathcal{X} \cdot \mathcal{X}}{| \mathcal{X} |^2}
+$$&lt;/p>
+&lt;hr>
+&lt;h2 id="test">Test&lt;/h2>
+&lt;p>\begin{tikzpicture}
+\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+{
+F &amp;amp; B \
+&amp;amp; A \};
+\path[-stealth]
+(m-1-1) edge node [above] {$\beta$} (m-1-2)
+(m-1-2) edge node [right] {$\rho$} (m-2-2)
+(m-1-1) edge node [left] {$\alpha$} (m-2-2);
+\end{tikzpicture}&lt;/p>
+&lt;hr>
+&lt;h2 id="fragments">Fragments&lt;/h2>
+&lt;p>Make content appear incrementally&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">{{% fragment %}} One {{% /fragment %}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{% fragment %}} **Two** {{% /fragment %}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{% fragment %}} Three {{% /fragment %}}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Press &lt;code>Space&lt;/code> to play!&lt;/p>
+&lt;span class="fragment " >
+One
+&lt;/span>
+&lt;span class="fragment " >
+&lt;strong>Two&lt;/strong>
+&lt;/span>
+&lt;span class="fragment " >
+Three
+&lt;/span>
+&lt;hr>
+&lt;p>A fragment can accept two optional parameters:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>class&lt;/code>: use a custom style (requires definition in custom CSS)&lt;/li>
+&lt;li>&lt;code>weight&lt;/code>: sets the order in which a fragment appears&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="speaker-notes">Speaker Notes&lt;/h2>
+&lt;p>Add speaker notes to your presentation&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">{{% speaker_note %}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">-&lt;/span> Only the speaker can read these notes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">-&lt;/span> Press &lt;span class="sb">`S`&lt;/span> key to view
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{% /speaker_note %}}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Press the &lt;code>S&lt;/code> key to view the speaker notes!&lt;/p>
+&lt;aside class="notes">
+&lt;ul>
+&lt;li>Only the speaker can read these notes&lt;/li>
+&lt;li>Press &lt;code>S&lt;/code> key to view&lt;/li>
+&lt;/ul>
+&lt;/aside>
+&lt;hr>
+&lt;h2 id="themes">Themes&lt;/h2>
+&lt;ul>
+&lt;li>black: Black background, white text, blue links (default)&lt;/li>
+&lt;li>white: White background, black text, blue links&lt;/li>
+&lt;li>league: Gray background, white text, blue links&lt;/li>
+&lt;li>beige: Beige background, dark text, brown links&lt;/li>
+&lt;li>sky: Blue background, thin dark text, blue links&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ul>
+&lt;li>night: Black background, thick white text, orange links&lt;/li>
+&lt;li>serif: Cappuccino background, gray text, brown links&lt;/li>
+&lt;li>simple: White background, black text, blue links&lt;/li>
+&lt;li>solarized: Cream-colored background, dark green text, blue links&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;section data-noprocess data-shortcode-slide
+data-background-image="blue_background.jpg"
+>
+&lt;h2 id="custom-slide">Custom Slide&lt;/h2>
+&lt;p>Customize the slide style and background&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">{{&lt;span class="p">&amp;lt;&lt;/span> &lt;span class="nt">slide&lt;/span> &lt;span class="na">background-image&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/media/boards.jpg&amp;#34;&lt;/span> &lt;span class="p">&amp;gt;&lt;/span>}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{&lt;span class="p">&amp;lt;&lt;/span> &lt;span class="nt">slide&lt;/span> &lt;span class="na">background-color&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;#0000FF&amp;#34;&lt;/span> &lt;span class="p">&amp;gt;&lt;/span>}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{&lt;span class="p">&amp;lt;&lt;/span> &lt;span class="nt">slide&lt;/span> &lt;span class="na">class&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;my-style&amp;#34;&lt;/span> &lt;span class="p">&amp;gt;&lt;/span>}}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="custom-css-example">Custom CSS Example&lt;/h2>
+&lt;p>Let&amp;rsquo;s make headers navy colored.&lt;/p>
+&lt;p>Create &lt;code>assets/css/reveal_custom.css&lt;/code> with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">reveal&lt;/span> &lt;span class="nt">section&lt;/span> &lt;span class="nt">h1&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">reveal&lt;/span> &lt;span class="nt">section&lt;/span> &lt;span class="nt">h2&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">reveal&lt;/span> &lt;span class="nt">section&lt;/span> &lt;span class="nt">h3&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">navy&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h1 id="questions">Questions?&lt;/h1>
+&lt;p>&lt;a href="https://github.com/wowchemy/wowchemy-hugo-modules/discussions" target="_blank" rel="noopener">Ask&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://wowchemy.com/docs/managing-content/#create-slides" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/p></description></item></channel></rss>
