@@ -1,5 +1,5 @@
 ---
-title: "Music genre descriptor for classification based on Tonnetz trajectories"
+title: "partitura: A Python Package for Handling Symbolic Musical Data"
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here 
