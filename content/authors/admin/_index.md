@@ -48,7 +48,7 @@ social:
   link: '/#contact'
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.com/citations?user=bQRK3eYAAAAJ&hl=en
+  link: https://scholar.google.com/citations?hl=en&user=bQRK3eYAAAAJ
 - icon: github
   icon_pack: fab
   link: https://github.com/melkisedeath
