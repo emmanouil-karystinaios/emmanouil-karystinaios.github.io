@@ -9,7 +9,17 @@ Click on the &lt;strong>Slides&lt;/strong> button above to view the built-in sli
 &lt;li>&lt;strong>Upload&lt;/strong> an existing slide deck to &lt;code>static/&lt;/code> and link using &lt;code>url_slides&lt;/code> parameter in the front matter of the talk file&lt;/li>
 &lt;li>&lt;strong>Embed&lt;/strong> your slides (e.g. Google Slides) or presentation video on this page using &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">shortcodes&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>Slides</title><link>https://emmanouil-karystinaios.github.io/slides/example/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/slides/example/</guid><description>&lt;h2 id="on-performance-similarity-and-structure-segmentation">On Performance Similarity and Structure Segmentation&lt;/h2>
+&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>partitura: A Python Package for Handling Symbolic Musical Data</title><link>https://emmanouil-karystinaios.github.io/publication/partitura/</link><pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/partitura/</guid><description>&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+&lt;/div>
+&lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
+&lt;/div>
+&lt;/div>
+&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>Slides</title><link>https://emmanouil-karystinaios.github.io/slides/example/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/slides/example/</guid><description>&lt;h2 id="on-performance-similarity-and-structure-segmentation">On Performance Similarity and Structure Segmentation&lt;/h2>
 &lt;p>&lt;a href="emmanouil-karystinaios.netify.app">Emmanouil Karystinaios&lt;/a> | &lt;a href="emmanouil-karystinaios.netify.app">article&lt;/a>&lt;/p>
 &lt;!-- [Wowchemy](https://wowchemy.com/) | [Documentation](https://owchemy.com/docs/managing-content/#create-slides) -->
 &lt;hr>
