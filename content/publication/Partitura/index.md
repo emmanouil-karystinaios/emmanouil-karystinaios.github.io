@@ -18,7 +18,7 @@ authors:
 - ""
 
 date: "2022-05-30T00:00:00Z"
-doi: "arXiv:2201.13144"
+doi: "2201.13144"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2020-11-30T00:00:00Z"
