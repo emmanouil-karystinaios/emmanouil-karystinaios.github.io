@@ -51,7 +51,7 @@ social:
   link: https://scholar.google.com/citations?hl=en&user=bQRK3eYAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/melkisedeath
+  link: https://github.com/manoskary
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/manos-karistineos/
