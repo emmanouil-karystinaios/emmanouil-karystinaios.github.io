@@ -63,7 +63,7 @@ social:
   icon_pack: ai
   link: media/resume.pdf
 
-# Enter email to display Gravatar (if Gravatar enabled in Config)
+# Enter email to display Gravatar (if Gravatar enabled in Conf  ig)
 email: "emmanouil.karystinaios@jku.at"
 
 # Highlight the author in author lists? (true/false)
@@ -74,4 +74,4 @@ Emmanouil Karystinaios is a Ph.D. Student of artificial intelligence at the Comp
 
 His past and current work includes, Cadence Detection, Structural Segmentation, and Similarity Metrics for Piano Performances.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/CV_Emmanouil_Karystinaios(En).pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
