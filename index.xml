@@ -9,67 +9,7 @@ Click on the &lt;strong>Slides&lt;/strong> button above to view the built-in sli
 &lt;li>&lt;strong>Upload&lt;/strong> an existing slide deck to &lt;code>static/&lt;/code> and link using &lt;code>url_slides&lt;/code> parameter in the front matter of the talk file&lt;/li>
 &lt;li>&lt;strong>Embed&lt;/strong> your slides (e.g. Google Slides) or presentation video on this page using &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">shortcodes&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>Musical Voice Separation as Link Prediction: Modeling a Musical Perception Task as a Multi-Trajectory Tracking Problem</title><link>https://emmanouil-karystinaios.github.io/publication/vocsep_ijcai2023/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/vocsep_ijcai2023/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>The ACCompanion: Combining Reactivity, Robustness, and Musical Expressivity in an Automatic Piano Accompanist</title><link>https://emmanouil-karystinaios.github.io/publication/accompanion_ijcai2023/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/accompanion_ijcai2023/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>Cadence Detection in Symbolic Classical Music using Graph Neural Networks</title><link>https://emmanouil-karystinaios.github.io/publication/cadet_ismir2022/</link><pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/cadet_ismir2022/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>partitura: A Python Package for Handling Symbolic Musical Data</title><link>https://emmanouil-karystinaios.github.io/publication/partitura/</link><pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/partitura/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>The match file format: Encoding Alignments between Scores and Performances</title><link>https://emmanouil-karystinaios.github.io/publication/match/</link><pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/match/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>Towards Quantifying Differences in Expressive Piano Performances: Are Euclidean-like Distance Measures Enough?</title><link>https://emmanouil-karystinaios.github.io/publication/performance/</link><pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/performance/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item><item><title>Slides</title><link>https://emmanouil-karystinaios.github.io/slides/example/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/slides/example/</guid><description>&lt;h2 id="on-performance-similarity-and-structure-segmentation">On Performance Similarity and Structure Segmentation&lt;/h2>
+&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>Automatic Note-Level Score-to-Performance Alignments in the ASAP Dataset</title><link>https://emmanouil-karystinaios.github.io/publication/asap_tismir2023/</link><pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/asap_tismir2023/</guid><description/></item><item><title>Musical Voice Separation as Link Prediction: Modeling a Musical Perception Task as a Multi-Trajectory Tracking Problem</title><link>https://emmanouil-karystinaios.github.io/publication/vocsep_ijcai2023/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/vocsep_ijcai2023/</guid><description/></item><item><title>The ACCompanion: Combining Reactivity, Robustness, and Musical Expressivity in an Automatic Piano Accompanist</title><link>https://emmanouil-karystinaios.github.io/publication/accompanion_ijcai2023/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/accompanion_ijcai2023/</guid><description/></item><item><title>Cadence Detection in Symbolic Classical Music using Graph Neural Networks</title><link>https://emmanouil-karystinaios.github.io/publication/cadet_ismir2022/</link><pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/cadet_ismir2022/</guid><description/></item><item><title>partitura: A Python Package for Handling Symbolic Musical Data</title><link>https://emmanouil-karystinaios.github.io/publication/partitura/</link><pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/partitura/</guid><description/></item><item><title>The match file format: Encoding Alignments between Scores and Performances</title><link>https://emmanouil-karystinaios.github.io/publication/match/</link><pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/match/</guid><description/></item><item><title>Towards Quantifying Differences in Expressive Piano Performances: Are Euclidean-like Distance Measures Enough?</title><link>https://emmanouil-karystinaios.github.io/publication/performance/</link><pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/performance/</guid><description/></item><item><title>Slides</title><link>https://emmanouil-karystinaios.github.io/slides/example/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/slides/example/</guid><description>&lt;h2 id="on-performance-similarity-and-structure-segmentation">On Performance Similarity and Structure Segmentation&lt;/h2>
 &lt;p>&lt;a href="emmanouil-karystinaios.netify.app">Emmanouil Karystinaios&lt;/a> | &lt;a href="emmanouil-karystinaios.netify.app">article&lt;/a>&lt;/p>
 &lt;!-- [Wowchemy](https://wowchemy.com/) | [Documentation](https://owchemy.com/docs/managing-content/#create-slides) -->
 &lt;hr>
@@ -320,14 +260,4 @@ f(X, p) = { \pi(x, p) \mid x \in X }
 &lt;p>If a chord does not strictly consist of neighboring notes, we
 first place notes which are neighbors of $y$, then we attempt to place the remaining notes according to the newly positioned notes, repeating until no more notes can be placed.
 %need to consider a system which, for a note $y$ with corresponding position $p_y$, a chord $X$ and a Tonnetz $T$, first finds the neighbors of $y$ and then the neighbors of each neighbor of $y$ in $T$, etc.
-If some notes remain to be placed, then one of the remaining notes is placed in relation to an arbitrary already placed note, and the process is repeated. This process is summarized in Algorithm&lt;/p></description></item><item><title>Music genre descriptor for classification based on Tonnetz trajectories</title><link>https://emmanouil-karystinaios.github.io/publication/music_genre_descriptor/</link><pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/music_genre_descriptor/</guid><description>&lt;div class="alert alert-note">
-&lt;div>
-Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-&lt;/div>
-&lt;/div>
-&lt;div class="alert alert-note">
-&lt;div>
-Create your slides in Markdown - click the &lt;em>Slides&lt;/em> button to check out the example.
-&lt;/div>
-&lt;/div>
-&lt;p>Supplementary notes can be added here, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">code, math, and images&lt;/a>.&lt;/p></description></item></channel></rss>
+If some notes remain to be placed, then one of the remaining notes is placed in relation to an arbitrary already placed note, and the process is repeated. This process is summarized in Algorithm&lt;/p></description></item><item><title>Music genre descriptor for classification based on Tonnetz trajectories</title><link>https://emmanouil-karystinaios.github.io/publication/music_genre_descriptor/</link><pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/music_genre_descriptor/</guid><description/></item></channel></rss>
