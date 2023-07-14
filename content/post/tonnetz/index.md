@@ -41,17 +41,34 @@ categories:
 - Symbolic Representations
 ---
 
+# Harmonic Trajectories in the Tonnetz
+
+## Introduction
+
+The Neo-Riemannian Tonnetz is a way of visualizing musical relationships between chords. It was developed by music theorists to help understand how chords can transition smoothly from one to another.
+
+Imagine a grid or network of interconnected points. Each point represents a different chord. The horizontal lines connect chords that are closely related, while the vertical lines connect chords that share similar tonal qualities.
+
+The Tonnetz is based on the idea that chords can be transformed or changed into one another through small movements. These transformations are represented by diagonal lines on the Tonnetz. For example, a chord can be transformed into another chord by changing one note at a time, moving in a specific direction on the grid.
+
+By studying the Tonnetz, musicians and theorists can analyze chord progressions and see how different chords are related to each other. It provides a visual representation of the harmonic possibilities and helps to explain the underlying structure of music.
+
+In simple terms, the Neo-Riemannian Tonnetz is a grid that shows how chords in music are connected and can be transformed smoothly from one to another. It helps musicians and theorists understand how chords fit together and how they can create pleasing transitions in music.
 
 
 ## Overview
 
+PLR operations, also known as Parallel, Leading Tone, and Relative operations, are a set of chord transformations used in music theory. These operations help musicians understand how chords can be changed while maintaining a similar musical function.
+
+1. Parallel operation: This operation involves changing a chord to another chord with the same root note but a different quality. For example, if you have a major chord, you can transform it into a minor chord by lowering the third note. This maintains the same root note but gives a different emotional quality to the chord.
+
+2. Leading Tone operation: The leading tone refers to the seventh note of a major scale, which is one step below the tonic note. In this operation, a chord is transformed by changing the root note to its leading tone. This creates a sense of tension and a desire to resolve back to the tonic chord. For example, if you have a C major chord, you can transform it into a B diminished chord by changing the root note to B.
+
+3. Relative operation: This operation involves changing a chord to another chord that shares a similar tonal quality but has a different root note. For example, if you have a C major chord, you can transform it into an A minor chord by changing the root note to A. The relative operation allows for smooth transitions between chords that have a related sound.
+
+These PLR operations provide musicians with tools to transform chords while maintaining certain musical characteristics. By understanding these operations, musicians can create interesting chord progressions, establish tension and resolution, and explore different harmonic possibilities in their music.
+
 The **PLR operations** are the foundation of the Tonnetz. 
-They act on major and minor triads.  
-**Triad** is any combination of any three distinct Pitch Classes. In the Neo-Riemannian theory the major and the minor triads are of interest that are equivalent to the groups $\{n, \; n+4, \; n+7\}$ \& $\{n, \; n+3, \; n+7 \}$ accordingly, where $n \in \mathbb{Z}/12\mathbb{Z}$.
-PLR stand for :
-- **P :** Parallel.
-- **L :** Leading-Tone Exchange. 
-- **R :** Relative.
 
 These operations/ transformations are the principal transformations of the Neo-Riemmanian theory which was mainly conceived by David Lewin (1933–2003).
 The mirror process is relative to the chord intervalic relations not the position of the shape in the circle.
