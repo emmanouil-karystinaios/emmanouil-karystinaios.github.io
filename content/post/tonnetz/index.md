@@ -143,7 +143,6 @@ In the C major scenario, E and G are neighbors of C in Tonnetz $T(3, 4, 5)$ so w
     \end{equation}    
 
 
-If a chord does not strictly consist of neighboring notes, we 
-first place notes which are neighbors of $y$, then we attempt to place the remaining notes according to the newly positioned notes, repeating until no more notes can be placed.
-%need to consider a system which, for a note $y$ with corresponding position $p_y$, a chord $X$ and a Tonnetz $T$, first finds the neighbors of $y$ and then the neighbors of each neighbor of $y$ in $T$, etc.
-If some notes remain to be placed, then one of the remaining notes is placed in relation to an arbitrary already placed note, and the process is repeated. This process is summarized in Algorithm
+If a chord does not strictly consist of neighboring notes, we first place notes which are neighbors of $y$, then we attempt to place the remaining notes according to the newly positioned notes, repeating until no more notes can be placed.
+For a note $y$ with corresponding position $p_y$, a chord $X$ and a Tonnetz $T$, first finds the neighbors of $y$ and then the neighbors of each neighbor of $y$ in $T$, etc.
+If some notes remain to be placed, then one of the remaining notes is placed in relation to an arbitrary already placed note, and the process is repeated.
