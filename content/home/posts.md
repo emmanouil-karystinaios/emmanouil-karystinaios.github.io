@@ -10,7 +10,7 @@ headless: true
 weight: 60
 
 title: Recent Posts
-subtitle:
+subtitle: For more posts, please visit my [Medium blog](https://medium.com/@manoskaristineos).
 
 content:
   # Page type to display. E.g. post, talk, publication...
