@@ -146,3 +146,69 @@ In the C major scenario, E and G are neighbors of C in Tonnetz $T(3, 4, 5)$ so w
 If a chord does not strictly consist of neighboring notes, we first place notes which are neighbors of $y$, then we attempt to place the remaining notes according to the newly positioned notes, repeating until no more notes can be placed.
 For a note $y$ with corresponding position $p_y$, a chord $X$ and a Tonnetz $T$, first finds the neighbors of $y$ and then the neighbors of each neighbor of $y$ in $T$, etc.
 If some notes remain to be placed, then one of the remaining notes is placed in relation to an arbitrary already placed note, and the process is repeated.
+
+## Chord Trajectory Construction
+
+This process, detailed in Algorithm 1, ensures a methodical approach to positioning each note within a chord on the Tonnetz grid. By iteratively placing neighboring notes, the algorithm builds a coherent and connected representation of the chord. If any notes remain unplaced after the initial neighbor placements, the algorithm continues by arbitrarily positioning the remaining notes relative to those already placed. This iterative process guarantees that all notes find their appropriate positions on the Tonnetz.
+
+### Algorithm 1: Placement of the First Chord
+
+1. **Input**: A chord \( X \) and a Tonnetz \( T \)
+2. **Result**: A set of placed notes
+
+**Steps**:
+1. Choose an arbitrary note \( x \) from \( X \) and assign it a position \( p_x \).
+2. Initialize `placed` with \( \{(x, p_x)\} \).
+3. Initialize `to_place` with \( X \setminus \{x\} \).
+4. While `to_place` is not empty:
+    - While there exists a note \( x \) in `placed` and a neighbor \( y \) in `to_place`:
+        - Place \( y \) in relation to \( x \) and update `placed` and `to_place`.
+    - If no neighbors are found, place a remaining note \( y \) relative to an arbitrary note \( x \) in `placed`.
+
+This algorithm ensures that the positioning of each chord is systematic and consistent, leveraging the geometric structure of the Tonnetz.
+
+### Extending to Chord Sequences
+
+For sequences of chords, the placement must consider the relationships between consecutive chords. The trajectory \( \mathcal{X} \) for a sequence of chords \( [C_1, C_2, \ldots, C_k] \) is built by extending the positioning strategy to maintain coherence across the entire sequence.
+
+Given a chord \( C_n \) with known positions for \( C_{n-1} \), the positioning for \( C_n \) is determined by selecting optimal reference points from \( C_{n-1} \) to ensure a compact representation. This process is repeated for each chord in the sequence.
+
+### Example: I-IV-V-I Progression in C Major
+
+Consider the sequence I-IV-V-I in C major:
+- Chords: C major, F major, G major, C major
+- Pitch Class Sets: \(\{0, 4, 7\}, \{5, 9, 0\}, \{7, 11, 2\}, \{0, 4, 7\}\)
+
+1. **C Major**: Position C at (0,0) and place E and G accordingly.
+2. **F Major**: Position F major relative to C, using common note C as a reference.
+3. **G Major**: Position G major relative to both F major and the subsequent C major to find the most compact placement.
+4. **C Major**: Reposition C major with reference to G major.
+
+![Progression in 4 Tonnetze.](./figs/tonnetz_i-iv-v-i.png "Figure 2 : 
+This example demonstrates how the trajectory method ensures a compact and connected representation of chord sequences, leveraging shared notes and optimal positioning strategies, independently of the chosen Tonnetz Space.")
+
+
+### Compliance Function and Compactness
+
+To determine the best Tonnetz for a given piece, the compliance function evaluates the compactness of trajectories across different Tonnetz configurations. The compliance predicate ensures that each chord is represented as a connected graph within the Tonnetz. The trajectory with the least number of connected components, smallest maximum width, and height is selected as the most compact.
+
+#### Compliance Function Steps:
+
+1. **Predicate Check**: Ensure each chord forms a connected graph.
+2. **Trajectory Calculation**: Build trajectories in all candidate Tonnetz.
+3. **Compactness Evaluation**: Measure the width, height, and number of connected components of each trajectory.
+4. **Normalization and Selection**: Normalize values and select the Tonnetz with the highest compactness score.
+
+### Graph Representation Centrality Measures and Future Possibilities
+
+Once a trajectory is constructed, it is transformed into a weighted graph. Each chord becomes a vertex, and edges represent the connections based on the Tonnetz intervals. Centrality measures (Katz, harmonic, closeness) are then calculated to capture the structural properties of the graph.
+These centrality measures, along with the general MIDI descriptors, form the feature set for classification algorithms, such as Random Forest and k-Nearest Neighbors.
+
+Furthermore, the graph representation of harmonic trajectories in the Tonnetz opens a gateway to advanced deep learning methods, particularly leveraging graph neural networks (GNNs). By transforming musical sequences into weighted, non-directed graphs, where vetrices model notes and edges their configuration in the Tonnetz space, this method enables the use of GNNs to learn intricate relationships within the music data. GNNs can effectively model the dependencies and patterns in these graph structures, allowing for potential improvements on classification tasks. This deep learning approach can uncover latent harmonic features and complex interactions that traditional methods might miss, providing a more robust framework for tasks such as composer classification, tonal tension, and even compositional style analysis. 
+
+
+### Conclusion
+
+The Tonnetz-based trajectory method offers a powerful tool for harmonic analysis and genre classification in music. By representing chords and their transitions in a geometric space, this method provides a nuanced understanding of harmonic relationships. The compliance function and centrality measures ensure that the trajectories are both compact and informative, leading to high classification accuracy.
+
+Future work will explore applying geometrical deep learning techniques, such as graph convolutional networks (GCNs) and graph attention networks (GATs), to further enhance the analysis and classification of harmonic trajectories. By leveraging these advanced models, we aim to capture the complex, non-Euclidean relationships inherent in musical compositions, enabling more precise and insightful characterizations of musical styles and genres. This approach may provide deeper insights into the underlying harmonic structures and stylistic nuances of different musical pieces. 
