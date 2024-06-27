@@ -1,3 +1,51 @@
+---
+title: From Notes to Insights
+subtitle: Visualizing Graph Neural Network Explanations with SMUG-Explain 
+
+# Summary for listings and search engines
+summary: Discover SMUG-Explain, a framework that makes Graph Neural Networks in music interpretable. Explore its applications in cadence detection and musicology. 
+
+# Link this post with a project
+projects: []
+
+# Date published
+date: "2024-06-27T00:00:00Z"
+
+# Date updated
+lastmod: "2024-06-27T00:00:00Z"
+
+# Is this an unpublished draft?
+draft: false
+
+# Show this page in the Featured widget?
+featured: false
+
+# Use math
+math: true
+
+# Featured image
+# Place an image named `featured.jpg/png` in this page's folder and customize its options here.
+image:
+  caption: 'SMUG-Explain: Visualizing Graph Neural Network Explanations for Music Scores'
+  focal_point: ""
+  placement: 2
+  preview_only: false
+
+authors:
+- admin
+
+tags:
+- Academic
+
+categories:
+- Symbolic Representations
+- Graph Neural Networks
+- Music Information Retrieval
+- Cadence Detection
+- Interpretability
+---
+
+
 # From Notes to Insights: Visualizing Graph Neural Network Explanations with SMUG-Explain
 
 Graph Neural Networks (GNNs) are making waves in the world of Music Information Research (MIR). From predicting cadences to generating expressive performances, these networks are unlocking new potentials in understanding and processing musical scores. But there’s a catch — their complex, “black-box” nature makes them hard to interpret. That’s where SMUG-Explain comes in. This innovative framework is designed to generate and visualize explanations for GNNs applied to musical scores. Let’s dive into how SMUG-Explain works, its application in cadence detection, and its potential to bring AI and musicology closer together.
