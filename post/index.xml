@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Emmanouil Karystinaios</title><link>https://emmanouil-karystinaios.github.io/post/</link><atom:link href="https://emmanouil-karystinaios.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate><image><url>https://emmanouil-karystinaios.github.io/media/icon_hu4c3aa08d28a737b1b7fdd38226539d61_369298_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://emmanouil-karystinaios.github.io/post/</link></image><item><title>Harmonic Trajectories in the Tonnetz</title><link>https://emmanouil-karystinaios.github.io/post/tonnetz/</link><pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/post/tonnetz/</guid><description>&lt;h1 id="harmonic-trajectories-in-the-tonnetz">Harmonic Trajectories in the Tonnetz&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Emmanouil Karystinaios</title><link>https://emmanouil-karystinaios.github.io/post/</link><atom:link href="https://emmanouil-karystinaios.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate><image><url>https://emmanouil-karystinaios.github.io/media/icon_hu4c3aa08d28a737b1b7fdd38226539d61_369298_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://emmanouil-karystinaios.github.io/post/</link></image><item><title>From Notes to Insights</title><link>https://emmanouil-karystinaios.github.io/post/smug/</link><pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/post/smug/</guid><description>&lt;h1 id="from-notes-to-insights-visualizing-graph-neural-network-explanations-with-smug-explain">From Notes to Insights: Visualizing Graph Neural Network Explanations with SMUG-Explain&lt;/h1>
+&lt;p>Graph Neural Networks (GNNs) are making waves in the world of Music Information Research (MIR). From predicting cadences to generating expressive performances, these networks are unlocking new potentials in understanding and processing musical scores. But there’s a catch — their complex, “black-box” nature makes them hard to interpret. That’s where SMUG-Explain comes in. This innovative framework is designed to generate and visualize explanations for GNNs applied to musical scores. Let’s dive into how SMUG-Explain works, its application in cadence detection, and its potential to bring AI and musicology closer together.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./figs/image%284%29.png" alt="Graph Score Explainer Pipeline" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;h2 id="the-challenge-understanding-gnns-in-music">The Challenge: Understanding GNNs in Music&lt;/h2>
+&lt;p>GNNs are fantastic at capturing intricate relationships in graph-structured data, which is perfect for tasks like cadence detection and voice separation in music. However, they’re notoriously difficult to interpret. For musicians and researchers, this opacity can be a big problem. Imagine having a super-smart assistant who helps you analyze music but never explains why it made certain decisions. Frustrating, right?&lt;/p>
+&lt;p>Enter SMUG-Explain, or Score MUsic Graph Explain. This is a framework for interpreting GNNs applied to music but it also integrates these explanations directly into the musical scores. By visualizing how each note and its features contribute to the model’s predictions, SMUG-Explain makes GNNs more transparent and understandable.&lt;/p>
+&lt;h2 id="how-does-smug-explain-work">How Does SMUG-Explain Work?&lt;/h2>
+&lt;h3 id="graph-based-representation-of-musical-scores">Graph-Based Representation of Musical Scores&lt;/h3>
+&lt;p>SMUG-Explain transforms a musical score into a graph where notes are vertices, and edges represent their temporal relationships. It uses four types of edges:&lt;/p>
+&lt;ul>
+&lt;li>Onset edges: Connect notes that start together.&lt;/li>
+&lt;li>Consecutive edges: Link notes where one ends as the next begins.&lt;/li>
+&lt;li>During edges: Connect notes that occur within the duration of another note.&lt;/li>
+&lt;li>Rest edges: Connect notes across rests.&lt;/li>
+&lt;/ul>
+&lt;p>
+&lt;figure id="figure-in-this-example-we-view-the-score-graph-on-an-excerpt-of-a-perfect-authentic-cadence-pac-with-harmonic-annotations-written-in-roman-numerals">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./figs/Example_Score.png" alt="Score Graph Example" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+In this example, we view the score graph on an excerpt of a Perfect Authentic Cadence (PAC) with harmonic annotations written in Roman numerals.
+&lt;/figcaption>&lt;/figure>
+&lt;/p>
+&lt;h3 id="explanation-techniques">Explanation Techniques&lt;/h3>
+&lt;p>SMUG-Explain employs several post-hoc, gradient-based explanation methods such as Saliency, Integrated Gradients, Deconvolution, and Guided Backpropagation. These techniques evaluate the importance of each note and its features in predicting specific musical events, such as cadences. Additionally, these methods allow us to derive attribution weights for every edge in the input graph. By selecting the top-k most important edges, we can construct an explanation subgraph that highlights the critical components influencing the model’s predictions.&lt;/p>
+&lt;h3 id="evaluation-of-explanations">Evaluation of Explanations&lt;/h3>
+&lt;p>The quality of an explanation is assessed using fidelity metrics. For each explanation subgraph, the underlying cadence prediction model is run on the subgraph alone or on the input graph without the explanation subgraph. If the correct cadence label can be predicted using only the explanation subgraph, the explanation is deemed sufficient. Conversely, if the label changes when the input graph is used without the explanation subgraph, the explanation is considered necessary. An explanation that is both necessary and sufficient achieves a perfect fidelity score, indicating it provides a comprehensive and accurate insight into the model’s decision-making process.&lt;/p>
+&lt;h2 id="interactive-visualization">Interactive Visualization&lt;/h2>
+&lt;p>The framework features an interactive web interface built with the Verovio music engraving library. Users can click on individual notes to see the subgraphs that most contribute to the model’s predictions and the feature importance of each note. This interface not only makes the explanations accessible but also aligns them with traditional music notation, making it easier for musicians and researchers to understand.&lt;/p>
+&lt;h2 id="real-world-applications-mozart-to-chopin">Real-World Applications: Mozart to Chopin&lt;/h2>
+&lt;h3 id="mozarts-piano-sonata-k280">Mozart’s Piano Sonata K280&lt;/h3>
+&lt;p>In an excerpt from Mozart’s Piano Sonata K280, the underlying GNN analysis model accurately identified a perfect authentic cadence. Using the SMUG-Explain framework we can see that the explanations outline the descending melodic line and the bass arpeggiation leading to the cadence, aligning closely with traditional harmonic analysis. This example highlights the framework’s potential to support musicological research.&lt;/p>
+&lt;p>
+&lt;figure id="figure-potential-reduction-process-of-smug-explain-pac-indicates-the-predicted-arrival-point-of-the-cadence">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./figs/smug.gif" alt="Mozart&amp;amp;rsquo;s Piano Sonata K280" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+Potential reduction process of Smug-Explain. PAC indicates the predicted arrival point of the cadence.
+&lt;/figcaption>&lt;/figure>
+&lt;/p>
+&lt;p>When we isolate the explanation and apply a reduction process, retaining only the subgraph involved in the explanation, we are left with the essential structure of a textbook harmonic Perfect Authentic Cadence (PAC). This streamlined subgraph highlights the critical notes and relationships that define the PAC. While this process shows how SMUG-Explain can break down complex musical structures into their core elements, due to the complexity of musical reduction it isn’t a built-in feature just yet.&lt;/p>
+&lt;h3 id="chopins-nocturne-in-c-minor">Chopin’s Nocturne in C Minor&lt;/h3>
+&lt;p>In Chopin’s Nocturne, SMUG-Explain correctly identified a complex cadence despite unconventional voice leading. The explanation subgraph included notes from earlier measures, indicating the model’s consideration of long-range musical dependencies, much like human musicological analysis. Notice how the explanation highlights the first chord in the first measure probably as an indication of the key.&lt;/p>
+&lt;p>
+&lt;figure id="figure-explanation-of-the-cadence-detection-in-chopins-nocturne-in-c-minor">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./figs/choping_smug.webp" alt="Chopin&amp;amp;rsquo;s Nocturne in C Minor" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+Explanation of the cadence detection in Chopin&amp;rsquo;s Nocturne in C Minor.
+&lt;/figcaption>&lt;/figure>
+&lt;/p>
+&lt;h2 id="future-directions">Future Directions&lt;/h2>
+&lt;p>SMUG-Explain is paving the way for making GNNs in music more interpretable and user-friendly. Future work will focus on developing new explanation techniques tailored to musical data, enhancing user-based evaluations, and making the framework more accessible through online platforms.
+Limitations of SMUG-Explain&lt;/p>
+&lt;p>While SMUG-Explain represents a significant step forward in making Graph Neural Networks (GNNs) more interpretable in the context of musical scores, it is not without its limitations. Understanding these constraints is crucial for setting realistic expectations and guiding future improvements. Here are some key limitations of the SMUG-Explain framework:&lt;/p>
+&lt;h4 id="1-model-dependence">1. Model Dependence&lt;/h4>
+&lt;p>An important limitation of SMUG-Explain lies in its dependence on the underlying GNN model used for cadence detection. Since SMUG-Explain employs post-hoc explanation methods, the accuracy and quality of its explanations are directly tied to the performance of the cadence detection model.&lt;/p>
+&lt;p>The explanations generated by SMUG-Explain are only as good as the predictions made by the cadence detection model. If the underlying model has poor accuracy or fails to capture essential musical elements, the explanations provided will reflect these shortcomings. This means that any inaccuracies or biases in the model will be present in the explanations, potentially leading to misleading insights.&lt;/p>
+&lt;p>The performance of the cadence detection model depends heavily on the quality and comprehensiveness of the training data. If the training dataset lacks diversity or contains errors, the model’s ability to generalize to new pieces will be compromised. Consequently, the explanations generated for these predictions may not be reliable or musically meaningful.&lt;/p>
+&lt;p>Some musical compositions, especially those with complex structures and unconventional harmonies, might pose significant challenges for the cadence detection model. If the model struggles with these complexities, the explanations provided by SMUG-Explain may fail to accurately represent the underlying musical relationships, leading to incomplete or incorrect interpretations.&lt;/p>
+&lt;h4 id="2-complexity-of-graph-constructions">2. Complexity of Graph Constructions&lt;/h4>
+&lt;p>Creating accurate graph representations of musical scores is inherently complex. While SMUG-Explain uses onset, consecutive, during, and rest edges to model relationships between notes, this approach might not capture all the nuances of a musical piece. Elements like dynamics, articulations, and tempo changes are not explicitly represented in the current graph model, potentially overlooking important musical information.&lt;/p>
+&lt;h4 id="3-user-experience-and-accessibility">3. User Experience and Accessibility&lt;/h4>
+&lt;p>Although the interactive interface of SMUG-Explain makes it accessible to users, it still requires a certain level of technical proficiency to operate effectively. Users need to be familiar with both music theory and the technical aspects of GNNs to fully leverage the framework. Additionally, the current implementation relies on local deployment, which might be a barrier for widespread use. An online, server-based version could enhance accessibility but has yet to be developed.&lt;/p>
+&lt;h4 id="4-interpretation-of-explanations">4. Interpretation of Explanations&lt;/h4>
+&lt;p>While SMUG-Explain provides visual explanations that align with traditional music notation, interpreting these explanations still requires a deep understanding of music theory and machine learning. The explanations might not be immediately intuitive to all users, particularly those without a background in musicology or computational music research.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>SMUG-Explain bridges the gap between the sophisticated world of GNNs and the nuanced demands of musicology. By providing clear, interactive explanations directly within the context of musical scores, it empowers users to understand and trust the decisions of AI models, paving the way for more effective and insightful musical analyses.&lt;/p>
+&lt;p>If you’re intrigued and want to explore SMUG-Explain further, check out the code on &lt;a href="https://github.com/manoskary/SMUG-Explain" target="_blank" rel="noopener">GitHub&lt;/a> or &lt;a href="https://arxiv.org/abs/2405.09241" target="_blank" rel="noopener">read the paper&lt;/a>. Dive in and discover how AI can illuminate the intricate beauty of musical compositions.&lt;/p>
+&lt;h2 id="acknowledgments">Acknowledgments&lt;/h2>
+&lt;p>I extend my gratitude to Francesco Foscarin, co-author of the original paper, for his invaluable assistance with the writing of this blog post and for providing some of the graphics.&lt;/p></description></item><item><title>Harmonic Trajectories in the Tonnetz</title><link>https://emmanouil-karystinaios.github.io/post/tonnetz/</link><pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/post/tonnetz/</guid><description>&lt;h1 id="harmonic-trajectories-in-the-tonnetz">Harmonic Trajectories in the Tonnetz&lt;/h1>
 &lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>The Neo-Riemannian Tonnetz is a way of visualizing musical relationships between chords. It was developed by music theorists to help understand how chords can transition smoothly from one to another.&lt;/p>
 &lt;p>Imagine a grid or network of interconnected points. Each point represents a different chord. The horizontal lines connect chords that are closely related, while the vertical lines connect chords that share similar tonal qualities.&lt;/p>
@@ -145,79 +220,4 @@ These centrality measures, along with the general MIDI descriptors, form the fea
 &lt;p>Furthermore, the graph representation of harmonic trajectories in the Tonnetz opens a gateway to advanced deep learning methods, particularly leveraging graph neural networks (GNNs). By transforming musical sequences into weighted, non-directed graphs, where vetrices model notes and edges their configuration in the Tonnetz space, this method enables the use of GNNs to learn intricate relationships within the music data. GNNs can effectively model the dependencies and patterns in these graph structures, allowing for potential improvements on classification tasks. This deep learning approach can uncover latent harmonic features and complex interactions that traditional methods might miss, providing a more robust framework for tasks such as composer classification, tonal tension, and even compositional style analysis.&lt;/p>
 &lt;h3 id="conclusion">Conclusion&lt;/h3>
 &lt;p>The Tonnetz-based trajectory method offers a powerful tool for harmonic analysis and genre classification in music. By representing chords and their transitions in a geometric space, this method provides a nuanced understanding of harmonic relationships. The compliance function and centrality measures ensure that the trajectories are both compact and informative, leading to high classification accuracy.&lt;/p>
-&lt;p>Future work will explore applying geometrical deep learning techniques, such as graph convolutional networks (GCNs) and graph attention networks (GATs), to further enhance the analysis and classification of harmonic trajectories. By leveraging these advanced models, we aim to capture the complex, non-Euclidean relationships inherent in musical compositions, enabling more precise and insightful characterizations of musical styles and genres. This approach may provide deeper insights into the underlying harmonic structures and stylistic nuances of different musical pieces.&lt;/p></description></item><item><title/><link>https://emmanouil-karystinaios.github.io/post/smug/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/post/smug/</guid><description>&lt;h1 id="from-notes-to-insights-visualizing-graph-neural-network-explanations-with-smug-explain">From Notes to Insights: Visualizing Graph Neural Network Explanations with SMUG-Explain&lt;/h1>
-&lt;p>Graph Neural Networks (GNNs) are making waves in the world of Music Information Research (MIR). From predicting cadences to generating expressive performances, these networks are unlocking new potentials in understanding and processing musical scores. But there’s a catch — their complex, “black-box” nature makes them hard to interpret. That’s where SMUG-Explain comes in. This innovative framework is designed to generate and visualize explanations for GNNs applied to musical scores. Let’s dive into how SMUG-Explain works, its application in cadence detection, and its potential to bring AI and musicology closer together.&lt;/p>
-&lt;p>
-&lt;figure >
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./figs/image%284%29.png" alt="Graph Score Explainer Pipeline" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;h2 id="the-challenge-understanding-gnns-in-music">The Challenge: Understanding GNNs in Music&lt;/h2>
-&lt;p>GNNs are fantastic at capturing intricate relationships in graph-structured data, which is perfect for tasks like cadence detection and voice separation in music. However, they’re notoriously difficult to interpret. For musicians and researchers, this opacity can be a big problem. Imagine having a super-smart assistant who helps you analyze music but never explains why it made certain decisions. Frustrating, right?&lt;/p>
-&lt;p>Enter SMUG-Explain, or Score MUsic Graph Explain. This is a framework for interpreting GNNs applied to music but it also integrates these explanations directly into the musical scores. By visualizing how each note and its features contribute to the model’s predictions, SMUG-Explain makes GNNs more transparent and understandable.&lt;/p>
-&lt;h2 id="how-does-smug-explain-work">How Does SMUG-Explain Work?&lt;/h2>
-&lt;h3 id="graph-based-representation-of-musical-scores">Graph-Based Representation of Musical Scores&lt;/h3>
-&lt;p>SMUG-Explain transforms a musical score into a graph where notes are vertices, and edges represent their temporal relationships. It uses four types of edges:&lt;/p>
-&lt;ul>
-&lt;li>Onset edges: Connect notes that start together.&lt;/li>
-&lt;li>Consecutive edges: Link notes where one ends as the next begins.&lt;/li>
-&lt;li>During edges: Connect notes that occur within the duration of another note.&lt;/li>
-&lt;li>Rest edges: Connect notes across rests.&lt;/li>
-&lt;/ul>
-&lt;p>
-&lt;figure id="figure-in-this-example-we-view-the-score-graph-on-an-excerpt-of-a-perfect-authentic-cadence-pac-with-harmonic-annotations-written-in-roman-numerals">
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./figs/Example_Score.png" alt="Score Graph Example" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;figcaption>
-In this example, we view the score graph on an excerpt of a Perfect Authentic Cadence (PAC) with harmonic annotations written in Roman numerals.
-&lt;/figcaption>&lt;/figure>
-&lt;/p>
-&lt;h3 id="explanation-techniques">Explanation Techniques&lt;/h3>
-&lt;p>SMUG-Explain employs several post-hoc, gradient-based explanation methods such as Saliency, Integrated Gradients, Deconvolution, and Guided Backpropagation. These techniques evaluate the importance of each note and its features in predicting specific musical events, such as cadences. Additionally, these methods allow us to derive attribution weights for every edge in the input graph. By selecting the top-k most important edges, we can construct an explanation subgraph that highlights the critical components influencing the model’s predictions.&lt;/p>
-&lt;h3 id="evaluation-of-explanations">Evaluation of Explanations&lt;/h3>
-&lt;p>The quality of an explanation is assessed using fidelity metrics. For each explanation subgraph, the underlying cadence prediction model is run on the subgraph alone or on the input graph without the explanation subgraph. If the correct cadence label can be predicted using only the explanation subgraph, the explanation is deemed sufficient. Conversely, if the label changes when the input graph is used without the explanation subgraph, the explanation is considered necessary. An explanation that is both necessary and sufficient achieves a perfect fidelity score, indicating it provides a comprehensive and accurate insight into the model’s decision-making process.&lt;/p>
-&lt;h2 id="interactive-visualization">Interactive Visualization&lt;/h2>
-&lt;p>The framework features an interactive web interface built with the Verovio music engraving library. Users can click on individual notes to see the subgraphs that most contribute to the model’s predictions and the feature importance of each note. This interface not only makes the explanations accessible but also aligns them with traditional music notation, making it easier for musicians and researchers to understand.&lt;/p>
-&lt;h2 id="real-world-applications-mozart-to-chopin">Real-World Applications: Mozart to Chopin&lt;/h2>
-&lt;h3 id="mozarts-piano-sonata-k280">Mozart’s Piano Sonata K280&lt;/h3>
-&lt;p>In an excerpt from Mozart’s Piano Sonata K280, the underlying GNN analysis model accurately identified a perfect authentic cadence. Using the SMUG-Explain framework we can see that the explanations outline the descending melodic line and the bass arpeggiation leading to the cadence, aligning closely with traditional harmonic analysis. This example highlights the framework’s potential to support musicological research.&lt;/p>
-&lt;p>
-&lt;figure id="figure-potential-reduction-process-of-smug-explain-pac-indicates-the-predicted-arrival-point-of-the-cadence">
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./figs/smug.gif" alt="Mozart&amp;amp;rsquo;s Piano Sonata K280" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;figcaption>
-Potential reduction process of Smug-Explain. PAC indicates the predicted arrival point of the cadence.
-&lt;/figcaption>&lt;/figure>
-&lt;/p>
-&lt;p>When we isolate the explanation and apply a reduction process, retaining only the subgraph involved in the explanation, we are left with the essential structure of a textbook harmonic Perfect Authentic Cadence (PAC). This streamlined subgraph highlights the critical notes and relationships that define the PAC. While this process shows how SMUG-Explain can break down complex musical structures into their core elements, due to the complexity of musical reduction it isn’t a built-in feature just yet.&lt;/p>
-&lt;h3 id="chopins-nocturne-in-c-minor">Chopin’s Nocturne in C Minor&lt;/h3>
-&lt;p>In Chopin’s Nocturne, SMUG-Explain correctly identified a complex cadence despite unconventional voice leading. The explanation subgraph included notes from earlier measures, indicating the model’s consideration of long-range musical dependencies, much like human musicological analysis. Notice how the explanation highlights the first chord in the first measure probably as an indication of the key.&lt;/p>
-&lt;p>
-&lt;figure id="figure-explanation-of-the-cadence-detection-in-chopins-nocturne-in-c-minor">
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./figs/choping_smug.webp" alt="Chopin&amp;amp;rsquo;s Nocturne in C Minor" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;figcaption>
-Explanation of the cadence detection in Chopin&amp;rsquo;s Nocturne in C Minor.
-&lt;/figcaption>&lt;/figure>
-&lt;/p>
-&lt;h2 id="future-directions">Future Directions&lt;/h2>
-&lt;p>SMUG-Explain is paving the way for making GNNs in music more interpretable and user-friendly. Future work will focus on developing new explanation techniques tailored to musical data, enhancing user-based evaluations, and making the framework more accessible through online platforms.
-Limitations of SMUG-Explain&lt;/p>
-&lt;p>While SMUG-Explain represents a significant step forward in making Graph Neural Networks (GNNs) more interpretable in the context of musical scores, it is not without its limitations. Understanding these constraints is crucial for setting realistic expectations and guiding future improvements. Here are some key limitations of the SMUG-Explain framework:&lt;/p>
-&lt;h4 id="1-model-dependence">1. Model Dependence&lt;/h4>
-&lt;p>An important limitation of SMUG-Explain lies in its dependence on the underlying GNN model used for cadence detection. Since SMUG-Explain employs post-hoc explanation methods, the accuracy and quality of its explanations are directly tied to the performance of the cadence detection model.&lt;/p>
-&lt;p>The explanations generated by SMUG-Explain are only as good as the predictions made by the cadence detection model. If the underlying model has poor accuracy or fails to capture essential musical elements, the explanations provided will reflect these shortcomings. This means that any inaccuracies or biases in the model will be present in the explanations, potentially leading to misleading insights.&lt;/p>
-&lt;p>The performance of the cadence detection model depends heavily on the quality and comprehensiveness of the training data. If the training dataset lacks diversity or contains errors, the model’s ability to generalize to new pieces will be compromised. Consequently, the explanations generated for these predictions may not be reliable or musically meaningful.&lt;/p>
-&lt;p>Some musical compositions, especially those with complex structures and unconventional harmonies, might pose significant challenges for the cadence detection model. If the model struggles with these complexities, the explanations provided by SMUG-Explain may fail to accurately represent the underlying musical relationships, leading to incomplete or incorrect interpretations.&lt;/p>
-&lt;h4 id="2-complexity-of-graph-constructions">2. Complexity of Graph Constructions&lt;/h4>
-&lt;p>Creating accurate graph representations of musical scores is inherently complex. While SMUG-Explain uses onset, consecutive, during, and rest edges to model relationships between notes, this approach might not capture all the nuances of a musical piece. Elements like dynamics, articulations, and tempo changes are not explicitly represented in the current graph model, potentially overlooking important musical information.&lt;/p>
-&lt;h4 id="3-user-experience-and-accessibility">3. User Experience and Accessibility&lt;/h4>
-&lt;p>Although the interactive interface of SMUG-Explain makes it accessible to users, it still requires a certain level of technical proficiency to operate effectively. Users need to be familiar with both music theory and the technical aspects of GNNs to fully leverage the framework. Additionally, the current implementation relies on local deployment, which might be a barrier for widespread use. An online, server-based version could enhance accessibility but has yet to be developed.&lt;/p>
-&lt;h4 id="4-interpretation-of-explanations">4. Interpretation of Explanations&lt;/h4>
-&lt;p>While SMUG-Explain provides visual explanations that align with traditional music notation, interpreting these explanations still requires a deep understanding of music theory and machine learning. The explanations might not be immediately intuitive to all users, particularly those without a background in musicology or computational music research.&lt;/p>
-&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>SMUG-Explain bridges the gap between the sophisticated world of GNNs and the nuanced demands of musicology. By providing clear, interactive explanations directly within the context of musical scores, it empowers users to understand and trust the decisions of AI models, paving the way for more effective and insightful musical analyses.&lt;/p>
-&lt;p>If you’re intrigued and want to explore SMUG-Explain further, check out the code on &lt;a href="https://github.com/manoskary/SMUG-Explain" target="_blank" rel="noopener">GitHub&lt;/a> or &lt;a href="https://arxiv.org/abs/2405.09241" target="_blank" rel="noopener">read the paper&lt;/a>. Dive in and discover how AI can illuminate the intricate beauty of musical compositions.&lt;/p>
-&lt;h2 id="acknowledgments">Acknowledgments&lt;/h2>
-&lt;p>I extend my gratitude to Francesco Foscarin, co-author of the original paper, for his invaluable assistance with the writing of this blog post and for providing some of the graphics.&lt;/p></description></item></channel></rss>
+&lt;p>Future work will explore applying geometrical deep learning techniques, such as graph convolutional networks (GCNs) and graph attention networks (GATs), to further enhance the analysis and classification of harmonic trajectories. By leveraging these advanced models, we aim to capture the complex, non-Euclidean relationships inherent in musical compositions, enabling more precise and insightful characterizations of musical styles and genres. This approach may provide deeper insights into the underlying harmonic structures and stylistic nuances of different musical pieces.&lt;/p></description></item></channel></rss>
