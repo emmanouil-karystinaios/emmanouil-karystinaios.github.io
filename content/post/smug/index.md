@@ -1,5 +1,5 @@
 ---
-title: From Notes to Insights
+title: From Notes to Insights - Visualizing Graph Neural Network Explanations with SMUG-Explain
 subtitle: Visualizing Graph Neural Network Explanations with SMUG-Explain 
 
 # Summary for listings and search engines
