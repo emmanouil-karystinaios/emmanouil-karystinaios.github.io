@@ -50,7 +50,6 @@ categories:
 
 Graph Neural Networks (GNNs) are making waves in the world of Music Information Research (MIR). From predicting cadences to generating expressive performances, these networks are unlocking new potentials in understanding and processing musical scores. But there’s a catch — their complex, “black-box” nature makes them hard to interpret. That’s where SMUG-Explain comes in. This innovative framework is designed to generate and visualize explanations for GNNs applied to musical scores. Let’s dive into how SMUG-Explain works, its application in cadence detection, and its potential to bring AI and musicology closer together.
 
-![Graph Score Explainer Pipeline](./figs/image(4).png "")
 
 ## The Challenge: Understanding GNNs in Music
 
