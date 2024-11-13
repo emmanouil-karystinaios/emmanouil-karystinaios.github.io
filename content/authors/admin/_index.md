@@ -74,6 +74,6 @@ highlight_name: false
 
 Emmanouil Karystinaios is a researcher in artificial intelligence, recently completing his Ph.D. at the Computational Perception Institute of Johannes Kepler University. His research focuses on Graph Neural Networks, Computational Musicology, and Music Information Retrieval. Currently, he is working on the Automatic Analysis of Symbolic Music using Graph Neural Networks (GNNs) and on Generative Music Medicine, exploring the use of AI-generated music in therapeutic contexts.
 
-His past and ongoing work includes Cadence Detection, Structural Segmentation, and developing tools such as Partitura and GraphMuse for symbolic music processing.
+His past and ongoing work includes Cadence Detection, Structural Segmentation, and developing Python packages such as Partitura and GraphMuse for symbolic music processing.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
