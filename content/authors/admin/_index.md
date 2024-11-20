@@ -6,7 +6,7 @@ title: Emmanouil Karystinaios
 superuser: true
 
 # Role/position/tagline
-role: Ph.D. Student
+role: Postdoctoral Researcher in Artificial Intelligence
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -27,7 +27,7 @@ education:
   courses:
   - course: PhD in Artificial Intelligence
     institution: Johannes Kepler University
-    year: 2020-
+    year: 2020-2024
   - course: M.Sc. in Mathematical Logic (Mathematics)
     institution: Université Paris 7 Diderot
     year: 2018-2020
