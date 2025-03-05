@@ -6,7 +6,7 @@ title: Emmanouil Karystinaios
 superuser: true
 
 # Role/position/tagline
-role: Ph.D. Student
+role: Postdoctoral Researcher in Artificial Intelligence
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -27,7 +27,7 @@ education:
   courses:
   - course: PhD in Artificial Intelligence
     institution: Johannes Kepler University
-    year: 2020-
+    year: 2020-2024
   - course: M.Sc. in Mathematical Logic (Mathematics)
     institution: Université Paris 7 Diderot
     year: 2018-2020
@@ -70,8 +70,10 @@ email: "emmanouil.karystinaios@jku.at"
 highlight_name: false
 ---
 
-Emmanouil Karystinaios is a Ph.D. Student of artificial intelligence at the Computational Perception Institute of Johannes Kepler University. His research interests include Computational Musicology, Graph Neural Networks and Music Information Retrieval. Currently, he is working on Automatic Analysis of Symbolic Music using Graph Neural Networks (GNNs).
+[//]: # (Emmanouil Karystinaios is a Ph.D. Student of artificial intelligence at the Computational Perception Institute of Johannes Kepler University. His research interests include Computational Musicology, Graph Neural Networks and Music Information Retrieval. Currently, he is working on Automatic Analysis of Symbolic Music using Graph Neural Networks &#40;GNNs&#41;.)
 
-His past and current work includes, Cadence Detection, Structural Segmentation, and Similarity Metrics for Piano Performances.
+Emmanouil Karystinaios is a researcher in artificial intelligence, recently completing his Ph.D. at the Computational Perception Institute of Johannes Kepler University. His research focuses on Graph Neural Networks, Computational Musicology, and Music Information Retrieval. Currently, he is working on the Automatic Analysis of Symbolic Music using Graph Neural Networks (GNNs) and on Generative Music Medicine, exploring the use of AI-generated music in therapeutic contexts.
+
+His past and ongoing work includes Cadence Detection, Structural Segmentation, and developing Python packages such as Partitura and GraphMuse for symbolic music processing.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
