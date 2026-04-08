@@ -14,7 +14,7 @@ authors:
 - ""
 
 date: "2022-08-30T00:00:00Z"
-doi: "  2201.13144"
+doi: "2208.14819"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2022-08-01T00:00:00Z"
@@ -44,7 +44,7 @@ featured: true
 # - name: HAL
 #   url: https://hal.archives-ouvertes.fr/hal-03031287/document
 
-url_pdf: ''
+url_pdf: 'https://arxiv.org/pdf/2208.14819'
 url_code: 'https://github.com/manoskary/cadet'
 url_dataset: 'https://github.com/manoskary/tonnetzcad'
 url_poster: ''

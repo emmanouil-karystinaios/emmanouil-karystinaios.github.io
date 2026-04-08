@@ -1,0 +1,5 @@
+name: website-preview
+channels:
+  - conda-forge
+dependencies:
+  - hugo=0.122.0

@@ -1,0 +1,53 @@
+- title: ScorePrompts
+  label: Symbolic Analysis
+  theme: symbolic
+  href: https://huggingface.co/spaces/manoskary/scoreprompts
+  summary: Explain and inspect music scores through analysis-driven prompting for symbolic notation workflows.
+
+- title: WeaveMuse
+  label: Agentic Multimodal
+  theme: multimodal
+  href: https://huggingface.co/spaces/manoskary/weavemuse
+  summary: Explore an agentic framework for multimodal music understanding and generation across notation, text, and audio.
+
+- title: Piano Engraving
+  label: Score Engraving
+  theme: engraving
+  href: https://huggingface.co/spaces/manoskary/piano-engraving
+  summary: Correct voice and staff assignments for piano scores in MusicXML and MEI with an engraving-focused workflow.
+
+- title: NotaGen Inference
+  label: Symbolic Generation
+  theme: symbolic
+  href: https://huggingface.co/spaces/manoskary/NotaGen-Inference
+  summary: Generate symbolic music in ABC notation with a streamlined inference interface built around NotaGen.
+
+- title: AnalysisGNN Music Analysis
+  label: Structured MIR
+  theme: analysis
+  href: https://huggingface.co/spaces/manoskary/analysisgnn
+  summary: Run score analysis with AnalysisGNN for structured symbolic music understanding and prediction.
+
+- title: Music Flamingo
+  label: Audio Understanding
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/music-flamingo
+  summary: Upload audio and get detailed analysis through a multimodal music understanding interface.
+
+- title: Audio Flamingo 3 Demo
+  label: Audio-native Prompting
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/audio-flamingo-3
+  summary: Experiment with audio-native prompting and responses using the Audio Flamingo 3 demo.
+
+- title: Stable Audio Open 1.0 Music
+  label: Audio Generation
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/stable-audio-open-1.0-music
+  summary: Generate music with Stable Audio Open from a lightweight browser-based interface.
+
+- title: MuseControlLite
+  label: Controlled Synthesis
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/MuseControlLite
+  summary: Use Stable Audio Open inference with extra control parameters for more directed generation.

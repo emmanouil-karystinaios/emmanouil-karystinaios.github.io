@@ -1,0 +1,30 @@
+{{ $demos := site.Data.demos }}
+<div class="demo-collection">
+  <p class="demo-collection__eyebrow">Live Research Systems</p>
+  <p class="demo-collection__intro">
+    A curated set of interactive Hugging Face Spaces spanning score understanding, symbolic generation,
+    engraving, and audio-first music workflows.
+  </p>
+
+  <div class="demo-grid">
+    {{ range $demos }}
+      <article class="demo-card demo-card--{{ .theme }}">
+        <div class="demo-card__meta">
+          <span class="demo-card__chip">{{ .label }}</span>
+          <span class="demo-card__linkhint">HF Space</span>
+        </div>
+
+        <h3 class="demo-card__title">
+          <a class="demo-card__title-link" href="{{ .href }}" target="_blank" rel="noopener">{{ .title }}</a>
+        </h3>
+
+        <p class="demo-card__summary">{{ .summary }}</p>
+
+        <a class="demo-card__cta" href="{{ .href }}" target="_blank" rel="noopener">
+          Open demo
+          <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+    {{ end }}
+  </div>
+</div>

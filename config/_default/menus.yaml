@@ -10,6 +10,9 @@ main:
   - name: Posts
     url: '#posts'
     weight: 20
+  - name: Demos
+    url: '#demos'
+    weight: 30
   - name: Publications
     url: './publication/'
     weight: 50

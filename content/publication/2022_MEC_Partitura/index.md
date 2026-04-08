@@ -1,5 +1,5 @@
 ---
-title: "partitura: A Python Package for Handling Symbolic Musical Data"
+title: "Partitura: A Python Package for Symbolic Music Processing"
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here 
@@ -17,11 +17,11 @@ authors:
 - ""
 - ""
 
-date: "2022-05-30T00:00:00Z"
-doi: "  2201.13144"
+date: "2022-06-02T00:00:00Z"
+doi: "2206.01071"
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2020-11-30T00:00:00Z"
+publishDate: "2022-06-02T00:00:00Z"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
@@ -48,7 +48,7 @@ featured: true
 # - name: HAL
 #   url: https://hal.archives-ouvertes.fr/hal-03031287/document
 
-url_pdf: 'https://arxiv.org/pdf/2201.13144.pdf'
+url_pdf: 'https://arxiv.org/pdf/2206.01071'
 url_code: 'https://github.com/CPJKU/partitura'
 url_dataset: ''
 url_poster: ''

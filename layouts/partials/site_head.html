@@ -1,0 +1,503 @@
+{{ $scr := .Scratch }}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  {{ $is_sponsor := site.Params.i_am_a_sponsor | default false }}
+  {{ $hide_generator := site.Params.power_ups.hide_generator | default false }}
+  {{ if not (and $is_sponsor $hide_generator) }}
+    <meta name="generator" content="Wowchemy {{ site.Data.wowchemy.version }} for Hugo" />
+  {{ end }}
+
+  {{/* EXTENSIBILITY HOOK: HEAD-START */}}
+  {{ partial "functions/get_hook" (dict "hook" "head-start" "context" .) }}
+
+  {{ if .Params.private }}
+    <meta name="robots" content="noindex" />
+  {{- end -}}
+
+  {{/* Parse theme and font */}}
+  {{ partial "functions/parse_theme" . }}
+
+  {{/* Pre-connect to Google Fonts if the site's Font Theme uses them. */}}
+  {{ with ($scr.Get "google_fonts") }}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {{ end }}
+
+  {{/* Load Google Fonts if the site's Font Theme uses them. */}}
+  {{/* Note: we cannot use SRI with Google Fonts because the CSS is dynamically generated according to the user agent. */}}
+  {{ with ($scr.Get "google_fonts") }}
+    {{ if hasPrefix . "family=" }}
+      {{/* If `google_fonts` starts with "family=", use API v2 (https://developers.google.com/fonts/docs/css2) */}}
+      <link rel="preload" as="style" {{ printf "href=\"https://fonts.googleapis.com/css2?%s&display=swap\"" . | safeHTMLAttr }}>
+      <link rel="stylesheet" {{ printf "href=\"https://fonts.googleapis.com/css2?%s&display=swap\"" . | safeHTMLAttr }} media="print" onload="this.media='all'">
+    {{ else }}
+      {{ errorf "There is a new version of Google Fonts. Learn how to upgrade your font pack at https://wowchemy.com/docs/customization/#custom-font" }}
+    {{ end }}
+  {{ end }}
+
+  {{ if site.Params.marketing.analytics.google_optimize | and hugo.IsProduction }}
+    <script src="https://www.googleoptimize.com/optimize.js?id={{ site.Params.marketing.analytics.google_optimize }}"></script>
+  {{- end -}}
+
+  {{/* Attempt to load superuser. */}}
+  {{ $superuser_name := "" }}
+  {{ $superuser_username := "" }}
+  {{ $superuser_role := "" }}
+  {{ range first 1 (where (where site.Pages "Section" "authors") "Params.superuser" true) }}
+    {{ $superuser_name = .Title }}
+    {{ $superuser_username = path.Base .File.Dir }}
+    {{ $superuser_role = .Params.role }}
+  {{ end }}
+  {{ $scr.Set "superuser_username" $superuser_username }}{{/* Set superuser globally for page_author.html. */}}
+
+  {{ with $superuser_name }}<meta name="author" content="{{ . }}" />{{ end }}
+
+  {{/* Generate page description. */}}
+  {{ $desc := "" }}
+  {{ if .Params.summary }}
+    {{ $desc = .Params.summary }}
+  {{ else if .Params.abstract }}
+    {{ $desc = .Params.abstract }}
+  {{ else if .IsPage }}
+    {{ $desc = .Summary }}
+  {{ else if site.Params.marketing.seo.description }}
+    {{ $desc = site.Params.marketing.seo.description }}
+  {{ else }}
+    {{ $desc = $superuser_role }}
+  {{ end }}
+  <meta name="description" content="{{ $desc }}" />
+
+  {{ range .Translations }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+  {{ end }}
+  <link rel="alternate" hreflang="{{ site.LanguageCode | default "en-us" }}" href="{{ .Permalink }}" />
+
+  {{ $css := site.Data.assets.css }}
+  {{ $js := site.Data.assets.js }}
+  {{ if ne ($scr.Get "primary") "#fff" }}
+    <meta name="theme-color" content="{{ $scr.Get "primary" }}" />
+  {{ end }}
+
+  {{/* Config LaTeX math rendering. */}}
+  {{ if or .Params.math site.Params.features.math.enable }}
+    {{ $mathjax_config := resources.Get "js/mathjax-config.js" }}
+    <script src="{{ $mathjax_config.RelPermalink }}"></script>
+  {{ end }}
+
+  {{/* Attempt to load local vendor CSS, otherwise load from CDN. */}}
+
+  {{/* Only load non-essential CSS in this media-swapping way */}}
+  {{- $stylesheets := slice -}}
+  {{- $lib_names := slice "fontawesome/all.min" -}}
+  {{- range $lib_names -}}
+    {{- $stylesheets = $stylesheets | append (resources.Get (printf "css/libs/%s.css" . ) ) -}}
+  {{- end -}}
+  {{ $stylesheets = $stylesheets | resources.Concat "css/vendor-bundle.css" | minify }}
+  {{- if eq (getenv "WC_POST_CSS") "true" -}}
+    {{- $stylesheets = $stylesheets | postCSS -}}
+  {{- end -}}
+  {{- if hugo.IsProduction -}}
+    {{- $stylesheets = $stylesheets | fingerprint "md5" -}}
+  {{- end -}}
+  {{- if eq (getenv "WC_POST_CSS") "true" -}}
+    {{/* PostProcess must be last action in the pipeline */}}
+    {{- $stylesheets = $stylesheets | resources.PostProcess -}}
+  {{- end -}}
+  <link rel="stylesheet" href="{{$stylesheets.RelPermalink}}" media="print" onload="this.media='all'">
+
+  {{ $scr.Set "vendor_css_filename" "main.min.css" }}
+  {{ $scr.Set "vendor_js_filename" "main.min.js" }}
+  {{ if and (fileExists (printf "static/css/vendor/%s" ($scr.Get "vendor_css_filename"))) (fileExists (printf "static/js/vendor/%s" ($scr.Get "vendor_js_filename"))) }}
+    {{ $scr.Set "use_cdn" 0 }}
+    <link rel="stylesheet" href="{{ printf "/css/vendor/%s" ($scr.Get "vendor_css_filename") | relURL }}" />
+  {{ else }}
+    {{ $scr.Set "use_cdn" 1 }}
+    {{ if site.Params.extensions.academicons.enable }}
+      {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" media=\"print\" onload=\"this.media='all'\">" (printf $css.academicons.url $css.academicons.version) $css.academicons.sri | safeHTML }}
+    {{ end }}
+
+    {{/* Workaround `.HasShortcode "gallery"` not parsing page resources (widget page sections) */}}
+    {{ $has_gallery := false }}
+    {{/* Note: unless there is a root `/index.md` with `type: widget_page`, Hugo treats homepage as `page` type. */}}
+    {{ if (eq .Type "widget_page") | or (and .IsHome (eq .Type "page")) }}
+      {{/* Check if widget page sections use a gallery */}}
+      {{ $page := "/home/index.md" }}
+      {{ $context := cond .IsHome (site.GetPage $page) . }}
+      {{ range $context.Resources.ByType "page" }}
+        {{ if .HasShortcode "gallery" }}
+          {{ $has_gallery = true }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{/* Single page */}}
+      {{ if .HasShortcode "gallery" }}
+        {{ $has_gallery = true }}
+      {{ end }}
+    {{ end }}
+    {{ $scr.Set "HasNestedGalleryShortcode" $has_gallery }}
+    {{ if $has_gallery | or site.Params.require_fancybox }}
+      {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" media=\"print\" onload=\"this.media='all'\">" (printf $css.fancybox.url $css.fancybox.version) $css.fancybox.sri | safeHTML }}
+    {{ end }}
+
+    {{/* Maps CSS. */}}
+    {{ $map_provider := lower site.Params.features.map.provider }}
+    {{ if in (slice "mapnik" "mapbox") $map_provider }}
+      {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" media=\"print\" onload=\"this.media='all'\">" (printf $css.leaflet.url $css.leaflet.version) $css.leaflet.sri | safeHTML }}
+    {{ end }}
+
+    {{ if eq (lower site.Params.features.search.provider) "algolia" }}
+      {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\">" (printf $css.instantsearch.url $css.instantsearch.version) $css.instantsearch.sri | safeHTML }}
+    {{ end }}
+
+    {{/* Load async scripts. */}}
+    {{ range $k, $v := site.Data.assets.js }}
+      {{/* TODO: investigate why `where ... "async" true` does not work. */}}
+      {{ $load := $v.async }}
+
+      {{/* Only load MathJax if required. */}}
+      {{ if (eq $k "mathJax") | and (not (or $.Params.math site.Params.features.math.enable)) }}
+        {{ $load = false }}
+      {{ end }}
+
+      {{ if $load }}
+        {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" async></script>" (printf $v.url $v.version) $v.sri | safeHTML }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Load WC style */}}
+  {{ $license := printf "/*! Wowchemy v%s | https://wowchemy.com/ */\n" site.Data.wowchemy.version }}
+  {{ $license := $license | printf "%s/*! Copyright 2016-present George Cushen (https://georgecushen.com/) */\n" }}
+  {{ $license := $license | printf "%s/*! License: https://github.com/wowchemy/wowchemy-hugo-themes/blob/main/LICENSE.md */\n" }}
+  {{ $css_bundle_head := $license | resources.FromString "css/bundle-head.css" }}
+  {{ $css_options := dict "targetPath" "css/wowchemy.css" }}
+  {{- if hugo.IsProduction -}}
+    {{- $css_options = merge $css_options (dict "outputStyle" "compressed") -}}
+  {{- end -}}
+  {{ $sass_template := resources.Get "scss/main.scss" }}
+  {{ $style := $sass_template | resources.ExecuteAsTemplate "main_parsed.scss" . | toCSS $css_options }}
+  {{- if hugo.IsProduction -}}
+    {{- $style = $style | minify -}}
+  {{- end -}}
+  {{ $style := slice $css_bundle_head $style | resources.Concat "css/wowchemy.css" }}
+  {{- if eq (getenv "WC_POST_CSS") "true" -}}
+    {{- $style = $style | postCSS -}}
+  {{- end -}}
+  {{- if hugo.IsProduction -}}
+    {{- $style = $style | fingerprint "md5" -}}
+  {{- end -}}
+  {{- if eq (getenv "WC_POST_CSS") "true" -}}
+    {{/* PostProcess must be last action in the pipeline */}}
+    {{- $style = $style | resources.PostProcess -}}
+  {{- end -}}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+
+  {{/* Hugo Chroma Syntax Highlighter Initialization */}}
+  {{/* TODO: optimize to only include the Chroma CSS themes when the page has code blocks. */}}
+  {{ $hl_theme_light := site.Params.features.syntax_highlighter.theme_light | default "github-light" }}
+  {{ $hl_theme_dark := site.Params.features.syntax_highlighter.theme_dark | default "dracula" }}
+  {{ $hl_theme_light_path := printf "css/libs/chroma/%s.css" $hl_theme_light }}
+  {{ $hl_theme_dark_path := printf "css/libs/chroma/%s.css" $hl_theme_dark }}
+  {{ if not (fileExists (printf "assets/%s" $hl_theme_light_path)) | or (not (fileExists (printf "assets/%s" $hl_theme_dark_path))) }}
+    {{ errorf "Hugo Chroma themes %s.css and %s.css not found in `css/libs/chroma/`. See https://gohugo.io/commands/hugo_gen_chromastyles/" $hl_theme_light $hl_theme_dark }}
+  {{ else }}
+    {{ $hl_theme_light_css := resources.Get $hl_theme_light_path | minify }}
+    {{ $hl_theme_dark_css := resources.Get $hl_theme_dark_path | minify }}
+    <link rel="stylesheet" href="{{ $hl_theme_light_css.RelPermalink }}" title="hl-light" media="print" onload="this.media='all'" {{ if ne ($scr.Get "light") true }}disabled{{end}}>
+    <link rel="stylesheet" href="{{ $hl_theme_dark_css.RelPermalink }}" title="hl-dark" media="print" onload="this.media='all'" {{ if eq ($scr.Get "light") true }}disabled{{end}}>
+  {{ end }}
+
+  {{/* Marketing */}}
+  {{ with site.Params.marketing.verification.google }}
+    <meta name="google-site-verification" content="{{ . }}" />
+  {{- end -}}
+  {{ with site.Params.marketing.verification.baidu }}
+    <meta name="baidu-site-verification" content="{{ . }}" />
+  {{- end -}}
+  {{ with site.Params.marketing.verification.bing }}
+    <meta name="msvalidate.01" content="{{ . }}" />
+  {{- end -}}
+  {{ partial "marketing/google_analytics" . }}
+  {{ partial "marketing/google_tag_manager" . }}
+  {{ partial "marketing/microsoft_clarity" . }}
+  {{ partial "marketing/baidu_tongji" . }}
+
+  {{/* Netlify Identity integration. */}}
+  {{ $use_cms := templates.Exists "wowchemycms/single.wowchemycms_config.yml" | default (site.Params.extensions.cms.enable | default false) }}
+  {{ if .IsHome | and $use_cms }}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  {{ end }}
+
+  {{/* RSS Feed */}}
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ site.Title }}" />
+  {{ end }}
+
+  {{/* Progressive Web App (PWA) Manifest */}}
+  {{ with site.Home.OutputFormats.Get "WebAppManifest" }}
+    <link rel="manifest" href="{{ .RelPermalink }}" />
+  {{ end }}
+
+  {{/* Progressive Web App (PWA) Icon */}}
+  <link rel="icon" type="image/png" href="{{ (partial "functions/get_icon" 32).RelPermalink }}" />
+  <link rel="apple-touch-icon" type="image/png" href="{{ (partial "functions/get_icon" 180).RelPermalink }}" />
+
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{/* Get page image for sharing. */}}
+  {{ $sharing_image := resources.GetMatch (path.Join "media" "sharing.*") }}
+  {{ $featured_image := (.Resources.ByType "image").GetMatch "*featured*" }}
+  {{ $avatar_image := (.Resources.ByType "image").GetMatch "avatar*" }}
+  {{ $has_logo := fileExists "assets/media/logo.png" | or (fileExists "assets/media/logo.svg") }}
+  {{ $og_image := "" }}
+  {{ $twitter_card := "summary_large_image" }}
+  {{ if (and (eq .Kind "term") $avatar_image) }}
+    {{/* Match image processing in About widget to prevent generating more images than necessary. */}}
+    {{ $og_image = ($avatar_image.Fill "270x270 Center").Permalink }}
+    {{ $twitter_card = "summary" }}
+  {{ else if $featured_image }}
+    {{ $og_image = $featured_image.Permalink }}
+  {{ else if $sharing_image }}
+    {{ $og_image = $sharing_image.Permalink }}
+  {{ else if $has_logo }}
+    {{ $og_image = (partial "functions/get_logo" (dict "constraint" "fit" "size" 300)).Permalink }}
+    {{ $twitter_card = "summary" }}
+  {{ else }}
+    {{ $og_image = (partial "functions/get_icon" 512).Permalink }}
+    {{ $twitter_card = "summary" }}
+  {{ end }}
+  {{ $scr.Set "og_image" $og_image }}{{/* Set `og_image` globally for `rss.xml`. */}}
+
+  {{ $title := "" }}
+  {{ with .Params.seo.title }}
+    {{ $title = replace . "{brand}" site.Title }}
+  {{ else }}
+    {{ $title = .Title | default site.Title }}
+    {{ if ne $title site.Title }}{{ $title = printf "%s | %s" $title site.Title }}{{ end }}
+  {{ end }}
+  <meta property="twitter:card" content="{{ $twitter_card }}" />
+  {{ with site.Params.marketing.seo.twitter }}
+    <meta property="twitter:site" content="@{{ . }}" />
+    <meta property="twitter:creator" content="@{{ . }}" />
+  {{ end }}
+  <meta property="og:site_name" content="{{ site.Title }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:title" content="{{ $title }}" />
+  <meta property="og:description" content="{{ $desc }}" />
+  {{- with $og_image -}}
+    <meta property="og:image" content="{{ . }}" />
+    <meta property="twitter:image" content="{{ . }}" />
+  {{- end -}}
+  <meta property="og:locale" content="{{ site.LanguageCode | default "en-us" }}" />
+  {{ if .IsPage }}
+    {{ if not .PublishDate.IsZero }}
+      <meta
+        property="article:published_time"
+        content="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"
+      />
+    {{ else if not .Date.IsZero }}
+      <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />
+    {{ end }}
+    {{ if not .Lastmod.IsZero }}<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}">{{ end }}
+  {{ else }}
+    {{ if not .Date.IsZero }}
+      <meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />
+    {{ end }}
+  {{ end }}
+
+  {{ partial "jsonld/main" (dict "page" . "summary" $desc) }}
+  {{ partial "cookie_consent" . }}
+
+  <style>
+    #demos .section-heading h1 {
+      letter-spacing: -0.04em;
+    }
+
+    #demos .section-heading p {
+      max-width: 18rem;
+      line-height: 1.6;
+      color: rgba(233, 229, 221, 0.72);
+    }
+
+    #demos .demo-collection {
+      position: relative;
+    }
+
+    #demos .demo-collection__eyebrow {
+      margin: 0 0 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 193, 111, 0.9);
+    }
+
+    #demos .demo-collection__intro {
+      max-width: 52rem;
+      margin: 0 0 1.75rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(230, 235, 245, 0.82);
+    }
+
+    #demos .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    #demos .demo-card {
+      --demo-accent: #f5b04d;
+      --demo-accent-soft: rgba(245, 176, 77, 0.14);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 245px;
+      padding: 1.4rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 38%),
+        linear-gradient(145deg, rgba(15, 21, 37, 0.98), rgba(26, 31, 50, 0.96));
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    #demos .demo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--demo-accent), rgba(255, 255, 255, 0));
+      opacity: 0.95;
+    }
+
+    #demos .demo-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+    }
+
+    #demos .demo-card--symbolic {
+      --demo-accent: #f5b04d;
+      --demo-accent-soft: rgba(245, 176, 77, 0.16);
+    }
+
+    #demos .demo-card--multimodal {
+      --demo-accent: #73e0c1;
+      --demo-accent-soft: rgba(115, 224, 193, 0.16);
+    }
+
+    #demos .demo-card--engraving {
+      --demo-accent: #f38ca5;
+      --demo-accent-soft: rgba(243, 140, 165, 0.16);
+    }
+
+    #demos .demo-card--analysis {
+      --demo-accent: #77b7ff;
+      --demo-accent-soft: rgba(119, 183, 255, 0.16);
+    }
+
+    #demos .demo-card--audio {
+      --demo-accent: #b39bff;
+      --demo-accent-soft: rgba(179, 155, 255, 0.16);
+    }
+
+    #demos .demo-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    #demos .demo-card__chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.72rem;
+      border-radius: 999px;
+      background: var(--demo-accent-soft);
+      color: var(--demo-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    #demos .demo-card__linkhint {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    #demos .demo-card__title {
+      margin: 0;
+      font-size: 1.42rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    #demos .demo-card__title-link {
+      color: #f7f4ec !important;
+      text-decoration: none;
+    }
+
+    #demos .demo-card__title-link:hover {
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+
+    #demos .demo-card__summary {
+      margin: 0.9rem 0 1.4rem;
+      color: rgba(230, 235, 245, 0.8);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    #demos .demo-card__cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--demo-accent), rgba(255, 255, 255, 0.92));
+      color: #10131e !important;
+      font-weight: 700;
+      text-decoration: none !important;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+    }
+
+    #demos .demo-card__cta:hover {
+      color: #10131e !important;
+      filter: brightness(1.03);
+      text-decoration: none !important;
+    }
+
+    @media (max-width: 991.98px) {
+      #demos .section-heading p {
+        max-width: none;
+        text-align: center;
+      }
+
+      #demos .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <title>{{$title}}</title>
+
+  {{/* EXTENSIBILITY HOOK: HEAD-END */}}
+  {{/* Deprecated custom_head hook */}}
+  {{ if templates.Exists "partials/custom_head" }}
+    {{ partial "custom_head" . }}
+  {{ end }}
+  {{ partial "functions/get_hook" (dict "hook" "head-end" "context" .) }}
+</head>

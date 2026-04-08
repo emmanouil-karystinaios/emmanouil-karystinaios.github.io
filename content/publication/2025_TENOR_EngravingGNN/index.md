@@ -15,7 +15,7 @@ authors:
 - ""
 
 date: "2025-09-01T00:00:00Z"
-doi: ""
+doi: "2509.19412"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2025-09-01T00:00:00Z"
@@ -45,7 +45,7 @@ featured: true
 # - name: HAL
 #   url: https://hal.archives-ouvertes.fr/hal-03031287/document
 
-url_pdf: ''
+url_pdf: 'https://arxiv.org/pdf/2509.19412'
 url_code: ''
 url_dataset: 
 url_poster: ''
