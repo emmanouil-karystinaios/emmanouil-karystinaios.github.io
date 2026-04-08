@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Symbolic Music | Emmanouil Karystinaios</title><link>https://emmanouil-karystinaios.github.io/tag/symbolic-music/</link><atom:link href="https://emmanouil-karystinaios.github.io/tag/symbolic-music/index.xml" rel="self" type="application/rss+xml"/><description>Symbolic Music</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Apr 2026 00:00:00 +0000</lastBuildDate><image><url>https://emmanouil-karystinaios.github.io/media/icon_hu4c3aa08d28a737b1b7fdd38226539d61_369298_512x512_fill_lanczos_center_3.png</url><title>Symbolic Music</title><link>https://emmanouil-karystinaios.github.io/tag/symbolic-music/</link></image><item><title>ScorePrompts - Explaining Music Scores with Large Language Models</title><link>https://emmanouil-karystinaios.github.io/post/scoreprompts/</link><pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/post/scoreprompts/</guid><description>&lt;p>Large language models are getting increasingly good at talking &lt;em>about&lt;/em> music, but they are still only as useful as the evidence we give them. Symbolic scores are dense, highly structured objects: they contain local events, larger formal patterns, and lots of contextual information that can easily get lost if we simply dump notation into a prompt and hope for the best.&lt;/p>
+&lt;p>That is the motivation behind &lt;strong>ScorePrompts&lt;/strong>. The project is designed to analyze a score first, organize the results into a compact grounded schema, and only then ask a language model to explain what is happening. The goal is not just to generate polished prose, but to generate explanations that stay tied to musical evidence.&lt;/p>
+&lt;p>You can try the live demo on &lt;a href="https://huggingface.co/spaces/manoskary/scoreprompts" target="_blank" rel="noopener">Hugging Face Spaces&lt;/a>, and the code lives in the &lt;a href="https://github.com/manoskary/scoreprompts" target="_blank" rel="noopener">ScorePrompts GitHub repository&lt;/a>.&lt;/p>
+&lt;h2 id="what-scoreprompts-does">What ScorePrompts does&lt;/h2>
+&lt;p>At a high level, ScorePrompts takes a symbolic score in MusicXML, runs a stack of music-analysis tools on it, and turns the result into natural-language descriptions at different levels of detail.&lt;/p>
+&lt;p>The interactive demo is intentionally simple:&lt;/p>
+&lt;ul>
+&lt;li>Upload a &lt;code>.musicxml&lt;/code>, &lt;code>.xml&lt;/code>, or &lt;code>.mxl&lt;/code> file.&lt;/li>
+&lt;li>Choose a model endpoint for text generation.&lt;/li>
+&lt;li>Run the symbolic analysis and text-generation pipeline.&lt;/li>
+&lt;li>Inspect the note, beat, and bar tables.&lt;/li>
+&lt;li>Read three text outputs: &lt;code>coarse&lt;/code>, &lt;code>detailed&lt;/code>, and &lt;code>expert&lt;/code>.&lt;/li>
+&lt;li>Download the structured outputs as CSV and JSON files.&lt;/li>
+&lt;/ul>
+&lt;p>This makes the interface approachable, but behind it there is a fairly deliberate research pipeline.&lt;/p>
+&lt;h2 id="from-score-to-grounded-schema">From score to grounded schema&lt;/h2>
+&lt;p>The first stage of ScorePrompts is not language generation at all. It is symbolic analysis.&lt;/p>
+&lt;p>For each uploaded score, the system extracts several complementary views:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>AnalysisGNN&lt;/strong> provides note-level predictions such as harmonic labels, cadence information, local key, phrase and section cues, and other symbolic descriptors.&lt;/li>
+&lt;li>&lt;strong>Beat and bar builders&lt;/strong> aggregate those note-level predictions into beat-wise and measure-wise tables.&lt;/li>
+&lt;li>&lt;strong>AlgoMus texture descriptors&lt;/strong> provide bar-level texture summaries.&lt;/li>
+&lt;li>&lt;strong>jSymbolic&lt;/strong> contributes global descriptors.&lt;/li>
+&lt;li>&lt;strong>Metadata extraction&lt;/strong> adds score-level context when it is available.&lt;/li>
+&lt;/ul>
+&lt;p>These outputs are then reduced into a chunked JSON schema. Instead of sending raw tables directly to the language model, ScorePrompts packages a consecutive range of measures together with:&lt;/p>
+&lt;ul>
+&lt;li>note, beat, and bar fields&lt;/li>
+&lt;li>score-level metadata and global features&lt;/li>
+&lt;li>embedded codebooks for categorical values&lt;/li>
+&lt;li>dense note arrays aligned with explicit field lists&lt;/li>
+&lt;/ul>
+&lt;p>This schema design matters a lot. It keeps each chunk self-contained and token-efficient while preserving alignment between the musical evidence and the text-generation step.&lt;/p>
+&lt;h2 id="a-three-stage-llm-protocol">A three-stage LLM protocol&lt;/h2>
+&lt;p>One of the most interesting parts of ScorePrompts is that it does not ask the model to jump straight from score data to a finished essay.&lt;/p>
+&lt;p>Instead, it uses a three-stage protocol:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Compiler&lt;/strong>: turns a schema chunk into grounded, measure-level facts.&lt;/li>
+&lt;li>&lt;strong>Planner&lt;/strong>: combines those facts with global metadata to build a canonical plan of sections, tonal motion, cadences, and salient events.&lt;/li>
+&lt;li>&lt;strong>Writer&lt;/strong>: converts the plan into three outputs with different levels of detail: &lt;code>coarse&lt;/code>, &lt;code>detailed&lt;/code>, and &lt;code>expert&lt;/code>.&lt;/li>
+&lt;/ol>
+&lt;p>This decomposition helps in two ways. First, it makes the reasoning path more inspectable. Second, it gives the pipeline a chance to validate intermediate outputs before they become polished language.&lt;/p>
+&lt;p>In the codebase, these JSON outputs are validated with Pydantic schemas, and the compiler stage is additionally checked for grounding against the available musical evidence. That makes ScorePrompts much more interesting to me than a generic &amp;ldquo;score captioning&amp;rdquo; demo: the project is trying to make symbolic music explanation &lt;strong>structured, inspectable, and reproducible&lt;/strong>.&lt;/p>
+&lt;h2 id="why-the-demo-is-useful">Why the demo is useful&lt;/h2>
+&lt;p>The Gradio demo is not just a nice wrapper around the pipeline. It is a useful research instrument in its own right.&lt;/p>
+&lt;p>It gives a quick way to:&lt;/p>
+&lt;ul>
+&lt;li>test how different scores behave under the same analysis stack&lt;/li>
+&lt;li>inspect intermediate note, beat, and bar tables&lt;/li>
+&lt;li>compare generated descriptions across abstraction levels&lt;/li>
+&lt;li>debug grounding issues before scaling up to batch runs&lt;/li>
+&lt;/ul>
+&lt;p>For responsiveness, the public-facing demo focuses on the &lt;strong>first chunk&lt;/strong> of a score by default. That design choice keeps the interaction fast while still showing the full path from score upload to structured analysis to generated explanation. If you want to cover more measures, the interface exposes controls such as the bars-per-chunk setting.&lt;/p>
+&lt;h2 id="more-than-a-demo-a-dataset-and-pipeline">More than a demo: a dataset and pipeline&lt;/h2>
+&lt;p>ScorePrompts is also a dataset-building pipeline.&lt;/p>
+&lt;p>The repository is set up to build a reproducible corpus pairing symbolic scores with:&lt;/p>
+&lt;ul>
+&lt;li>note-, beat-, bar-, and global-level analyses&lt;/li>
+&lt;li>chunked schemata stored as JSONL&lt;/li>
+&lt;li>multi-stage LLM artifacts&lt;/li>
+&lt;li>multi-tier natural-language descriptions&lt;/li>
+&lt;/ul>
+&lt;p>That makes it useful for more than one application. I see it as infrastructure for:&lt;/p>
+&lt;ul>
+&lt;li>grounded music description&lt;/li>
+&lt;li>analysis-to-text generation&lt;/li>
+&lt;li>educational music explanation&lt;/li>
+&lt;li>alignment-aware symbolic music generation&lt;/li>
+&lt;li>research on how LLMs can talk about structure in music without drifting away from evidence&lt;/li>
+&lt;/ul>
+&lt;p>This is one of the reasons I like the project: it treats explanation not just as UI copy, but as a data and modeling problem.&lt;/p>
+&lt;h2 id="current-limitations">Current limitations&lt;/h2>
+&lt;p>ScorePrompts is promising, but it is also important to be honest about what it depends on.&lt;/p>
+&lt;ul>
+&lt;li>The quality of the final text depends on the fidelity of the upstream symbolic analyses.&lt;/li>
+&lt;li>Missing or weak metadata limits what the writer stage can say reliably.&lt;/li>
+&lt;li>The chunked design improves tractability, but it also means that long-range structure has to be reconstructed carefully.&lt;/li>
+&lt;li>The interactive demo is only a preview of the full batch pipeline.&lt;/li>
+&lt;/ul>
+&lt;p>Those limitations are not accidental edge cases; they are part of the research problem. In my view, that is what makes ScorePrompts interesting: it pushes toward explanations that are not only fluent, but also auditable.&lt;/p>
+&lt;h2 id="closing-thoughts">Closing thoughts&lt;/h2>
+&lt;p>ScorePrompts sits at a point that I find especially exciting right now: between symbolic music analysis, dataset construction, and language-model interfaces. It is a practical demo, but it is also a way of asking a deeper question:&lt;/p>
+&lt;p>&lt;strong>What would it take for language models to explain music scores in a way that remains grounded in musical structure?&lt;/strong>&lt;/p>
+&lt;p>That is the question ScorePrompts is built around. If you would like to explore it yourself, you can start with the &lt;a href="https://huggingface.co/spaces/manoskary/scoreprompts" target="_blank" rel="noopener">live demo&lt;/a> or browse the implementation in the &lt;a href="https://github.com/manoskary/scoreprompts" target="_blank" rel="noopener">GitHub repository&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">conda activate analysisgnn
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python apps/prompt_gradio.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I expect this line of work to keep evolving, especially as the dataset side becomes richer and the connection between symbolic evidence and generated prose becomes easier to inspect, validate, and compare.&lt;/p></description></item><item><title>How Far Can Pretrained LLMs Go in Symbolic Music? Controlled Comparisons of Supervised and Preference-based Adaptation</title><link>https://emmanouil-karystinaios.github.io/publication/2026_nlp4musa_symbolicllms/</link><pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate><guid>https://emmanouil-karystinaios.github.io/publication/2026_nlp4musa_symbolicllms/</guid><description/></item></channel></rss>
