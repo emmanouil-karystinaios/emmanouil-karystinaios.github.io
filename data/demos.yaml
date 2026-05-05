@@ -10,6 +10,18 @@
   href: https://huggingface.co/spaces/manoskary/weavemuse
   summary: Explore an agentic framework for multimodal music understanding and generation across notation, text, and audio.
 
+- title: Woosh-VFlow
+  label: Video-to-Audio
+  theme: multimodal
+  href: https://huggingface.co/spaces/manoskary/Woosh-VFlow
+  summary: Generate sound effects from video inputs with Woosh's video-to-audio flow model in a browser-based demo.
+
+- title: Woosh-DFlow
+  label: Fast Text-to-Audio
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/Woosh-DFlow
+  summary: Create sound effects from text prompts with the distilled Woosh flow model for fast audio generation.
+
 - title: Piano Engraving
   label: Score Engraving
   theme: engraving
@@ -27,6 +39,12 @@
   theme: analysis
   href: https://huggingface.co/spaces/manoskary/analysisgnn
   summary: Run score analysis with AnalysisGNN for structured symbolic music understanding and prediction.
+
+- title: Music Score Graph Autoencoder
+  label: Graph Representation
+  theme: analysis
+  href: https://huggingface.co/spaces/manoskary/music-score-graph-autoencoder
+  summary: Inspect graph-based score representations through an interactive autoencoder demo for symbolic music structure.
 
 - title: Music Flamingo
   label: Audio Understanding
