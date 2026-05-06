@@ -34,12 +34,6 @@
   href: https://huggingface.co/spaces/manoskary/NotaGen-Inference
   summary: Generate symbolic music in ABC notation with a streamlined inference interface built around NotaGen.
 
-- title: AnalysisGNN Music Analysis
-  label: Structured MIR
-  theme: analysis
-  href: https://huggingface.co/spaces/manoskary/analysisgnn
-  summary: Run score analysis with AnalysisGNN for structured symbolic music understanding and prediction.
-
 - title: Music Score Graph Autoencoder
   label: Graph Representation
   theme: analysis
