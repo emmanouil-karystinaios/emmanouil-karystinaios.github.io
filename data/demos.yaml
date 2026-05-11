@@ -40,6 +40,13 @@
   href: https://huggingface.co/spaces/manoskary/music-score-graph-autoencoder
   summary: Inspect graph-based score representations through an interactive autoencoder demo for symbolic music structure.
 
+- title: AnalysisGNN
+  label: Music Analysis
+  theme: analysis
+  href: https://analysisgnn.com
+  source: Website
+  summary: Explore the AnalysisGNN project website for graph-based symbolic music analysis, resources, and demos.
+
 - title: Music Flamingo
   label: Audio Understanding
   theme: audio

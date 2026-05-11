@@ -11,7 +11,7 @@
       <article class="demo-card demo-card--{{ .theme }}">
         <div class="demo-card__meta">
           <span class="demo-card__chip">{{ .label }}</span>
-          <span class="demo-card__linkhint">HF Space</span>
+          <span class="demo-card__linkhint">{{ .source | default "HF Space" }}</span>
         </div>
 
         <h3 class="demo-card__title">
