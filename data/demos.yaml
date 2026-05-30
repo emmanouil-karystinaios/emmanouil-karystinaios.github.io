@@ -65,6 +65,12 @@
   href: https://huggingface.co/spaces/manoskary/stable-audio-open-1.0-music
   summary: Generate music with Stable Audio Open from a lightweight browser-based interface.
 
+- title: Stable Audio 3 Controls
+  label: Controlled Generation
+  theme: audio
+  href: https://huggingface.co/spaces/manoskary/stable-audio-3-controls
+  summary: Explore additional controls for Stable Audio Open 3 generation through the sao3-small-control model.
+
 - title: MuseControlLite
   label: Controlled Synthesis
   theme: audio
