@@ -6,7 +6,7 @@ title: Emmanouil Karystinaios
 superuser: true
 
 # Role/position/tagline
-role: Senior Machine Learning Engineer in Music AI
+role: Senior Machine Learning Engineer and Postdoctoral Researcher
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -16,7 +16,7 @@ organizations:
   url: https://www.jku.at/en/institute-of-computational-perception/
 
 # Short bio (displayed in user profile at end of posts)
-bio: I develop optical music recognition systems for MuseScore and research graph-based music analysis, music-based agentic orchestration, and music source restoration.
+bio: I work in music information retrieval as a Senior Machine Learning Engineer at Muse Group and a part-time Postdoctoral Researcher at Johannes Kepler University Linz.
 
 # Interests to show in About widget
 interests:
@@ -73,8 +73,8 @@ email: "emmanouil.karystinaios@jku.at"
 highlight_name: false
 ---
 
-Emmanouil Karystinaios is a Senior Machine Learning Engineer at Muse Group. He develops optical music recognition (OMR) systems for MuseScore that turn sheet-music images and PDFs into editable scores.
+Emmanouil Karystinaios works in music information retrieval (MIR) across industry and academia. He is a Senior Machine Learning Engineer at Muse Group and a part-time Postdoctoral Researcher at the Institute of Computational Perception at Johannes Kepler University Linz.
 
-He is also a part-time postdoctoral researcher at the Institute of Computational Perception at Johannes Kepler University Linz. His research includes symbolic music analysis with graph neural networks and music source restoration. His projects include AnalysisGNN, which lets users inspect and revise automated score analyses, and ScorePrompts, which uses musical structure to generate explanations of scores with language models.
+At Muse Group, he develops optical music recognition (OMR) systems for MuseScore that turn sheet-music images and PDFs into editable scores. At JKU, his research includes symbolic music analysis with graph neural networks and music source restoration. His projects include AnalysisGNN, which lets users inspect and revise automated score analyses, and ScorePrompts, which uses musical structure to generate explanations of scores with language models.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
