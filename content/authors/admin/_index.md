@@ -6,35 +6,38 @@ title: Emmanouil Karystinaios
 superuser: true
 
 # Role/position/tagline
-role: Postdoctoral Researcher in Artificial Intelligence
+role: Senior Machine Learning Engineer in Music AI
 
 # Organizations/Affiliations to show in About widget
 organizations:
+- name: Muse Group
+  url: https://www.mu.se/
 - name: Johannes Kepler University
   url: https://www.jku.at/en/institute-of-computational-perception/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include Music Information Retrieval, Music Generative models and Graph Neural Networks
+bio: I develop optical music recognition systems for MuseScore and research graph-based music analysis, music-based agentic orchestration, and music source restoration.
 
 # Interests to show in About widget
 interests:
-- Graph Neural Networks
-- Music Generation and Control
-- Music Information Retrieval
+- Graph Music Analysis
+- OMR
+- Music Based Agentic Orchestration
+- Music Source Restoration
 
 # Education to show in About widget
 education:
   courses:
   - course: PhD in Artificial Intelligence
     institution: Johannes Kepler University Austria
-    year: 2020-2024
+    year: 2021-2024
   - course: M.Sc. in Mathematical Logic (Mathematics)
     institution: Université Paris 7 Diderot
     year: 2018-2020
   - course: M.A. in Musical Programming and Composition
     institution: Université Paris 8 Vincennes
     year: 2017-2019
-  - course: B.A. in Musicology and Composition
+  - course: Diploma in Musicology (Integrated Master's in Composition and Analysis)
     institution: Aristotle University of Thessaloniki
     year: 2012-2017 
 
@@ -70,10 +73,8 @@ email: "emmanouil.karystinaios@jku.at"
 highlight_name: false
 ---
 
-[//]: # (Emmanouil Karystinaios is a Ph.D. Student of artificial intelligence at the Computational Perception Institute of Johannes Kepler University. His research interests include Computational Musicology, Graph Neural Networks and Music Information Retrieval. Currently, he is working on Automatic Analysis of Symbolic Music using Graph Neural Networks &#40;GNNs&#41;.)
+Emmanouil Karystinaios is a Senior Machine Learning Engineer at Muse Group. He develops optical music recognition (OMR) systems for MuseScore that turn sheet-music images and PDFs into editable scores.
 
-Emmanouil Karystinaios is a Postdoctoral researcher in artificial intelligence working for the institute of Computational Perception and the Human-centered Artificial Intelligence (HCAI) group at Johannes Kepler university in Austria. His research focuses on Music Information Research, Graph Neural Networks, and Computational Musicology. Currently, he is working on the Automatic Analysis of Symbolic Music using Graph Neural Networks (GNNs) and on Generative Music Medicine, exploring the use of AI-generated music in therapeutic contexts.
-
-His past and ongoing work includes Music Analysis,  Structure Segmentation, Generative Music models, and developing Python packages such as Partitura and GraphMuse for symbolic music processing.
+He is also a part-time postdoctoral researcher at the Institute of Computational Perception at Johannes Kepler University Linz. His research includes symbolic music analysis with graph neural networks and music source restoration. His projects include AnalysisGNN, which lets users inspect and revise automated score analyses, and ScorePrompts, which uses musical structure to generate explanations of scores with language models.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
