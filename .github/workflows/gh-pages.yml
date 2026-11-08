@@ -16,10 +16,21 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
+        id: setup-hugo
         uses: peaceiris/actions-hugo@v2
+        continue-on-error: true
         with:
           hugo-version: '0.97.3'
           extended: true
+
+      - name: Build pinned Hugo when the release download fails
+        if: steps.setup-hugo.outcome == 'failure'
+        env:
+          CGO_ENABLED: '1'
+          GOBIN: ${{ runner.temp }}/hugo-bin
+        run: |
+          go install -tags extended github.com/gohugoio/hugo@v0.97.3
+          echo "$GOBIN" >> "$GITHUB_PATH"
 
       - name: Build
         run: hugo --gc --minify
