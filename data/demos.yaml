@@ -1,8 +1,16 @@
+featured:
+- title: AnalysisGNN
+  label: Music Analysis
+  theme: analysis
+  href: https://analysisgnn.com
+  source: Website
+  summary: Inspect a score analysis, revise labels on the notation, and export the corrected annotations.
+
 - title: ScorePrompts
   label: Symbolic Analysis
   theme: symbolic
   href: https://huggingface.co/spaces/manoskary/scoreprompts
-  summary: Explain and inspect music scores through analysis-driven prompting for symbolic notation workflows.
+  summary: Ask questions about a score and inspect the musical evidence behind each explanation.
 
 - title: WeaveMuse
   label: Agentic Multimodal
@@ -10,6 +18,7 @@
   href: https://huggingface.co/spaces/manoskary/weavemuse
   summary: Explore an agentic framework for multimodal music understanding and generation across notation, text, and audio.
 
+more:
 - title: Woosh-VFlow
   label: Video-to-Audio
   theme: multimodal
@@ -39,13 +48,6 @@
   theme: analysis
   href: https://huggingface.co/spaces/manoskary/music-score-graph-autoencoder
   summary: Inspect graph-based score representations through an interactive autoencoder demo for symbolic music structure.
-
-- title: AnalysisGNN
-  label: Music Analysis
-  theme: analysis
-  href: https://analysisgnn.com
-  source: Website
-  summary: Explore the AnalysisGNN project website for graph-based symbolic music analysis, resources, and demos.
 
 - title: Music Flamingo
   label: Audio Understanding

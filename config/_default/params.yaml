@@ -43,7 +43,7 @@ header:
 
 footer:
   copyright:
-    notice: '© {2022} Emmanouil Karystinaios.'
+    notice: '© {year} Emmanouil Karystinaios.'
     license:
       enable: true
       allow_derivatives: false

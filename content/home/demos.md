@@ -6,7 +6,7 @@ headless: true
 weight: 75
 
 title: Demos
-subtitle: Interactive Hugging Face Spaces for score analysis, symbolic generation, engraving, and audio-native music workflows.
+subtitle: Interactive tools for music analysis, generation, engraving, and audio processing.
 ---
 
 {{< demos_grid >}}

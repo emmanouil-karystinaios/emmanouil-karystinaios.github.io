@@ -67,7 +67,7 @@ social:
   link: media/resume.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Conf  ig)
-email: "emmanouil.karystinaios@jku.at"
+email: "manoskaristineos@gmail.com"
 
 # Highlight the author in author lists? (true/false)
 highlight_name: false

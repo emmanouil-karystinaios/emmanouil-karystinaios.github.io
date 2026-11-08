@@ -1,22 +1,20 @@
 {{ $demos := site.Data.demos }}
+{{ $groups := slice (dict "title" "Featured Research Demos" "demos" $demos.featured) (dict "title" "More Demos" "demos" $demos.more) }}
+{{ range $groups }}
 <div class="demo-collection">
-  <p class="demo-collection__eyebrow">Live Research Systems</p>
-  <p class="demo-collection__intro">
-    A curated set of interactive Hugging Face Spaces spanning score understanding, symbolic generation,
-    graph representation, engraving, and audio-video music workflows.
-  </p>
+  <h3 class="demo-collection__eyebrow">{{ .title }}</h3>
 
   <div class="demo-grid">
-    {{ range $demos }}
+    {{ range .demos }}
       <article class="demo-card demo-card--{{ .theme }}">
         <div class="demo-card__meta">
           <span class="demo-card__chip">{{ .label }}</span>
           <span class="demo-card__linkhint">{{ .source | default "HF Space" }}</span>
         </div>
 
-        <h3 class="demo-card__title">
+        <h4 class="demo-card__title">
           <a class="demo-card__title-link" href="{{ .href }}" target="_blank" rel="noopener">{{ .title }}</a>
-        </h3>
+        </h4>
 
         <p class="demo-card__summary">{{ .summary }}</p>
 
@@ -28,3 +26,4 @@
     {{ end }}
   </div>
 </div>
+{{ end }}
